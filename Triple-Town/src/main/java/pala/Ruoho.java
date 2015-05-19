@@ -5,8 +5,9 @@ public class Ruoho implements Pala {
     private int x;
     private int y;
 
-    public Ruoho() {
-
+    public Ruoho(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override
@@ -22,11 +23,5 @@ public class Ruoho implements Pala {
     @Override
     public String toString() {
         return "R";
-    }
-
-    @Override
-    public void asetaKoordinaatit(int x, int y) {
-        this.x = x;
-        this.y = y;
     }
 }

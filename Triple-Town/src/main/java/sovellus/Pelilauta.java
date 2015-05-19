@@ -1,14 +1,16 @@
 package sovellus;
 
+import pala.Pala;
+
 
 public class Pelilauta {
 
 //    private final Pala[][] lauta = new Pala[6][6];
-    private final int[][] lauta = new int[6][6];
+    private final Pala[][] lauta = new Pala[6][6];
 
 
-    public void asetaLaudalle(int pala, int x, int y) {
-        this.lauta[x][y] = pala;
+    public void asetaLaudalle(Pala pala) {
+        this.lauta[pala.getX()][pala.getY()] = pala;
     }
 
     public void tulostaLauta() {
@@ -20,7 +22,7 @@ public class Pelilauta {
             for (int x = 0; x < 6; x++) {
  
                 
-                if (this.lauta[x][y] == 0) {
+                if (this.lauta[x][y] == null) {
                     System.out.print("_|");
                 }
                 
@@ -36,7 +38,7 @@ public class Pelilauta {
     }
     
     public boolean tyhjaRuutu(int x, int y) {
-        if (this.lauta[x][y] == 0) {
+        if (this.lauta[x][y] == null) {
             return true;
         }
         
