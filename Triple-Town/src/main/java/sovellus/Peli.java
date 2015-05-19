@@ -2,6 +2,7 @@ package sovellus;
 
 import java.util.Random;
 import java.util.Scanner;
+import kayttoliittyma.Pelilauta;
 import pala.Pala;
 import pala.Ruoho;
 
@@ -10,7 +11,7 @@ public class Peli {
     private Pelilauta lauta;
     private Scanner lukija = new Scanner(System.in);
     Random arpoja = new Random();
-    private String[] palat = {"", "ruoho", "pensas", "puu"};
+    private String[] palat = {"", "ruoho", "pensas", "puu", "talo", "kartano", "linna"};
 
     public Peli() {
         lauta = new Pelilauta();
@@ -40,9 +41,9 @@ public class Peli {
 
         while (true) {
             System.out.println("Mihin ruutuun haluat asettaa palan " + palat[pala] + "? Anna rivinumero:");
-            int y = kysyLuku();
+            int y = kysyKoordinaatti();
             System.out.println("Anna sarakenumero:");
-            int x = kysyLuku();
+            int x = kysyKoordinaatti();
 
             if (this.lauta.tyhjaRuutu(x, y)) {
                 this.lauta.asetaLaudalle(luoPala(pala, x, y));
@@ -55,19 +56,23 @@ public class Peli {
     }
 
     private int arvoPala() {
-
         return 1;
     }
-    
+
     private Pala luoPala(int pala, int x, int y) {
-        
+
         return new Ruoho(x, y);
     }
 
-    private int kysyLuku() {
+    private int kysyKoordinaatti() {
 
         while (true) {
-            int luku = Integer.parseInt(lukija.nextLine());
+            int luku = -1;
+            
+            try {
+                luku = Integer.parseInt(lukija.nextLine());
+            } catch (Exception e) {
+            }
 
             if (luku < 0 || luku > 6) {
                 System.out.println("Anna luku väliltä 0-5");
@@ -75,7 +80,5 @@ public class Peli {
                 return luku;
             }
         }
-
     }
-
 }

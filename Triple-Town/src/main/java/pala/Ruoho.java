@@ -4,6 +4,7 @@ public class Ruoho implements Pala {
 
     private int x;
     private int y;
+    private final int pisteet = 5;
 
     public Ruoho(int x, int y) {
         this.x = x;
@@ -19,9 +20,16 @@ public class Ruoho implements Pala {
     public int getY() {
         return this.y;
     }
+   
+    @Override
+    public int getPisteet() {
+        return this.pisteet;
+    }
 
     @Override
     public String toString() {
         return "R";
     }
+
+    
 }

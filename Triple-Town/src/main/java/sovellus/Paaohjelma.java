@@ -1,5 +1,5 @@
 
-package sovellus;
+import sovellus.Peli;
 
 
 public class Paaohjelma {
