@@ -6,8 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import pala.Pala;
-import pala.Ruoho;
+
 
 public class PeliTest {
 
@@ -30,11 +29,6 @@ public class PeliTest {
     public void tearDown() {
     }
 
-    @Test
-    public void peliLuoPalan() {
-        Peli peli = new Peli();
-        Pala pala = peli.luoPala();
-        
-        
-    }
+//    @Test
+    
 }

@@ -1,7 +1,6 @@
 
 package sovellus;
 
-import pala.Ruoho;
 
 public class Paaohjelma {
 

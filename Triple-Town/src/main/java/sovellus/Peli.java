@@ -1,8 +1,7 @@
 package sovellus;
 
 import java.util.Random;
-import pala.Pala;
-import pala.Ruoho;
+import java.util.Scanner;
 
 public class Peli {
 
@@ -14,31 +13,56 @@ public class Peli {
 
     public void aloita() {
         for (int i = 0; i < 2; i++) {
-            Pala pala = luoPala();
-            
-            pala.asetaKoordinaatit(arvoKoordinaatti(), arvoKoordinaatti());
-            this.lauta.asetaLaudalle(pala);
+
+            int x = arvoKoordinaatti();
+            int y = arvoKoordinaatti();
+
+            while (this.lauta.tyhjaRuutu(x, y)) {
+                this.lauta.asetaLaudalle(1, x, y);
+            }
         }
 
         this.lauta.tulostaLauta();
-    }
-
-    public Pala luoPala() {
-        Ruoho ruoho = new Ruoho();
-        return ruoho;
-    }
-
-    public boolean asetaPala(Pala pala, int x, int y) {
-        if (this.lauta.tyhjaRuutu(x, y)) {
-            pala.asetaKoordinaatit(x, y);
-            return true;
-        }
-        return false;
+        this.pelaa();
     }
 
     public int arvoKoordinaatti() {
         Random arpoja = new Random();
         return arpoja.nextInt(6);
+    }
+
+    private void pelaa() {
+
+        while (true) {
+            int pala = arvoPala();
+            asetaPala(pala);
+        }
+    }
+
+    private void asetaPala(int pala) {
+
+        Scanner lukija = new Scanner(System.in);
+        String[] palat = {"", "ruoho", "pensas", "puu"};
+        
+        while (true) {
+            System.out.println("Mihin ruutuun haluat asettaa palan " + palat[pala] + "? Anna rivinumero:");
+            int y = lukija.nextInt();
+            System.out.println("Anna sarakenumero:");
+            int x = lukija.nextInt();
+
+            if (this.lauta.tyhjaRuutu(x, y)) {
+                this.lauta.asetaLaudalle(pala, x, y);
+                this.lauta.tulostaLauta();
+                break;
+            } else {
+                System.out.println("Ruutu ei ollut tyhjä!");
+            }
+        }
+    }
+
+    private int arvoPala() {
+
+        return 1;
     }
 
 }
