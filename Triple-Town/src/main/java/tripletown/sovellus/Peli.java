@@ -1,22 +1,24 @@
-package sovellus;
+package tripletown.sovellus;
 
 import java.util.Random;
 import java.util.Scanner;
-import kayttoliittyma.Pelilauta;
-import pala.Pala;
-import pala.Ruoho;
+import tripletown.kayttoliittyma.Pelilauta;
+import tripletown.pala.Pala;
+import tripletown.pala.Pensas;
+import tripletown.pala.Ruoho;
 
 public class Peli {
 
-    private Pelilauta lauta;
-    private Scanner lukija = new Scanner(System.in);
+    private final Pelilauta lauta;
+    private final Scanner lukija = new Scanner(System.in);
     Random arpoja = new Random();
-    private String[] palat = {"", "ruoho", "pensas", "puu", "talo", "kartano", "linna"};
+    private final String[] palat = {"", "ruoho", "pensas", "puu", "talo", "kartano", "linna"};
 
     public Peli() {
         lauta = new Pelilauta();
     }
 
+    // Alustaa pelilaudan
     public void aloita() {
         for (int i = 0; i < 2; i++) {
 
@@ -29,7 +31,7 @@ public class Peli {
         this.pelaa();
     }
 
-    private void pelaa() {
+    public void pelaa() {
 
         while (true) {
             int pala = arvoPala();
@@ -37,12 +39,13 @@ public class Peli {
         }
     }
 
-    private void asetaPala(int pala) {
+    //Kysyy asetettavan palan sijainnin ja asettaa sen laudalle
+    public void asetaPala(int pala) {
 
         while (true) {
-            System.out.println("Mihin ruutuun haluat asettaa palan " + palat[pala] + "? Anna rivinumero:");
+            System.out.println("Mihin ruutuun haluat asettaa palan " + palat[pala] + "? Rivi:");
             int y = kysyKoordinaatti();
-            System.out.println("Anna sarakenumero:");
+            System.out.println("Sarake:");
             int x = kysyKoordinaatti();
 
             if (this.lauta.tyhjaRuutu(x, y)) {
@@ -55,26 +58,34 @@ public class Peli {
         }
     }
 
-    private int arvoPala() {
+    // Arpoo asetettavan palan numeron
+    public int arvoPala() {
         return 1;
     }
 
-    private Pala luoPala(int pala, int x, int y) {
-
+    // Luo palan palanumeron perusteella palat-taulukosta
+    public Pala luoPala(int pala, int x, int y) {
+        if (pala == 1) {
+            return new Ruoho(x, y);
+        }
+        if (pala == 2) {
+            return new Pensas(x, y);
+        }
         return new Ruoho(x, y);
     }
 
-    private int kysyKoordinaatti() {
-
+    //Kysyy pelaajalta koordinaatin ja varmistaa että se on 0:n ja 5:n väliltä
+    public int kysyKoordinaatti() {
+        int luku = -1;
+        
         while (true) {
-            int luku = -1;
-            
+
             try {
                 luku = Integer.parseInt(lukija.nextLine());
             } catch (Exception e) {
             }
 
-            if (luku < 0 || luku > 6) {
+            if (luku < 0 || luku > 5) {
                 System.out.println("Anna luku väliltä 0-5");
             } else {
                 return luku;

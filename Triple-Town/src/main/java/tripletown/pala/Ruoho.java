@@ -1,4 +1,4 @@
-package pala;
+package tripletown.pala;
 
 public class Ruoho implements Pala {
 

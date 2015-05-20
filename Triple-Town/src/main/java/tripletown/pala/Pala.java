@@ -1,5 +1,5 @@
 
-package pala;
+package tripletown.pala;
 
 public interface Pala {
     

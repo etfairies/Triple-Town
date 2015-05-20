@@ -1,14 +1,12 @@
-package kayttoliittyma;
+package tripletown.kayttoliittyma;
 
-import pala.Pala;
+import tripletown.pala.Pala;
 
 
 public class Pelilauta {
 
-//    private final Pala[][] lauta = new Pala[6][6];
     private final Pala[][] lauta = new Pala[6][6];
-
-
+    
     public void asetaLaudalle(Pala pala) {
         this.lauta[pala.getX()][pala.getY()] = pala;
     }
@@ -25,7 +23,6 @@ public class Pelilauta {
                 if (this.lauta[x][y] == null) {
                     System.out.print("_|");
                 }
-                
                 
                 else {
                     System.out.print(this.lauta[x][y] + "|");
@@ -45,5 +42,4 @@ public class Pelilauta {
         return false;
     }
 
-  
 }
