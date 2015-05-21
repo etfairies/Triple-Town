@@ -34,11 +34,12 @@ public class PeliTest {
     public void tearDown() {
     }
 
+    
     @Test
-    public void arvoPalaPalauttaaLuvunValilta0Ja5() {
+    public void arvoPalaPalauttaaLuvunValilta1Ja4() {
         for (int i = 0; i < 100; i++) {
             int luku = peli.arvoPala();
-            assertTrue(luku < 6 && luku > -1);
+            assertTrue(luku < 5 && luku > 0);
         }
     }
 
@@ -75,6 +76,23 @@ public class PeliTest {
 
         assertFalse(asetettu);
 
+    }
+    
+    @Test
+    public void pistetilanneOnAlussaNolla() {
+        assertEquals(0, peli.pistetilanne());
+    }
+    
+    @Test
+    public void ruohoKasvattaaPistetilannetta5Pisteella() {
+        peli.asetaPala(1, 1, 1);
+        assertEquals(5, peli.pistetilanne());
+    }
+    
+    @Test
+    public void pensasKasvattaaPistetilannetta20Pisteella() {
+        peli.asetaPala(2, 1, 1);
+        assertEquals(20, peli.pistetilanne());
     }
 
 }

@@ -33,12 +33,12 @@ public class RuohoTest {
 
 
     @Test
-    public void ruohoPalauttaaOikeanMerkkijonoesityksen() {
+    public void palaPalauttaaOikeanMerkkijonoesityksen() {
         assertEquals("R", ruoho.toString());
     }
     
     @Test
-    public void ruohoPalauttaaOikeanPistemaaran() {
+    public void palaPalauttaaOikeanPistemaaran() {
         assertEquals(5, ruoho.getPisteet());
     }
 }

@@ -20,6 +20,7 @@ public class Tekstikayttoliittyma {
 
         while (true) {
 
+            System.out.println("Pisteet: " + peli.pistetilanne());
             peli.tulostaLauta();
             int pala = peli.arvoPala();
             

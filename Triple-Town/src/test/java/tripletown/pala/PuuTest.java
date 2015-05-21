@@ -9,10 +9,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class PensasTest {
-    Pala pensas;
+public class PuuTest {
     
-    public PensasTest() {
+    Pala puu;
+    
+    public PuuTest() {
     }
     
     @BeforeClass
@@ -25,21 +26,20 @@ public class PensasTest {
     
     @Before
     public void setUp() {
-        pensas = new Pensas();
+        puu = new Puu();
     }
     
     @After
     public void tearDown() {
     }
 
-
     @Test
     public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("P", pensas.toString());
+        assertEquals("U", puu.toString());
     }
     
     @Test
     public void palaPalauttaaOikeanPistemaaran() {
-        assertEquals(20, pensas.getPisteet());
+        assertEquals(100, puu.getPisteet());
     }
 }

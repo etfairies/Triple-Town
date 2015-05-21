@@ -8,9 +8,13 @@ import tripletown.pala.Ruoho;
 public class Peli {
 
     private final Pala[][] lauta = new Pala[6][6];
+    private int pisteet;
     Random arpoja = new Random();
 
-   
+    public Peli() {
+        this.pisteet = 0;
+    }
+    
     // Alustaa pelilaudan
     public void alustaPelilauta() {
 
@@ -24,7 +28,16 @@ public class Peli {
     // Arpoo asetettavan palan numeron
     public int arvoPala() {
         double luku = arpoja.nextDouble();
-        
+        if (luku < 0.01) {
+            return 4;
+        }
+        if (luku < 0.02) {
+            return 3;
+        }
+        if (luku < 0.15) {
+            return 2;
+        }
+
         return 1;
     }
 
@@ -40,16 +53,18 @@ public class Peli {
     }
 
     // Asettaa palan pelilaudalle jos ruutu on tyhjä
-    public boolean asetaPala(int pala, int x, int y) {
+    public boolean asetaPala(int palanumero, int x, int y) {
 
         if (lauta[x][y] == null) {
-            this.lauta[x][y] = luoPala(pala);
+            Pala pala = luoPala(palanumero);
+            this.lauta[x][y] = pala;
+            this.pisteet += pala.getPisteet();
+            
             return true;
         }
         return false;
     }
 
-   
     public void tulostaLauta() {
 
         System.out.println("  0 1 2 3 4 5");
@@ -63,11 +78,12 @@ public class Peli {
                 } else {
                     System.out.print(this.lauta[x][y] + "|");
                 }
-
             }
             System.out.println("");
         }
-
     }
 
+    public int pistetilanne() {
+        return this.pisteet;
+    }
 }
