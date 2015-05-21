@@ -24,18 +24,13 @@ public class RuohoTest {
 
     @Before
     public void setUp() {
-        ruoho = new Ruoho(1, 2);
+        ruoho = new Ruoho();
     }
 
     @After
     public void tearDown() {
     }
 
-    @Test
-    public void ruohoAsettaaKoordinaatitOikein() {
-        assertEquals(1, ruoho.getX());
-        assertEquals(2, ruoho.getY());
-    }
 
     @Test
     public void ruohoPalauttaaOikeanMerkkijonoesityksen() {

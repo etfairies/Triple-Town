@@ -35,29 +35,46 @@ public class PeliTest {
     }
 
     @Test
+    public void arvoPalaPalauttaaLuvunValilta0Ja5() {
+        for (int i = 0; i < 100; i++) {
+            int luku = peli.arvoPala();
+            assertTrue(luku < 6 && luku > -1);
+        }
+    }
+
+    @Test
     public void luoPalaPalauttaaOlion() {
-        Pala pala = peli.luoPala(0, 1, 2);
+        Pala pala = peli.luoPala(0);
         assertNotNull(pala);
     }
 
     @Test
     public void luoPalaPalauttaaRuohonJosPalanumeroOnYksi() {
-        Pala pala = peli.luoPala(1, 1, 2);
+        Pala pala = peli.luoPala(1);
         assertTrue(pala instanceof Ruoho);
     }
-    
+
     @Test
     public void luoPalaPalauttaaPensaanJosPalanumeroOnKaksi() {
-        Pala pala = peli.luoPala(2, 1, 2);
+        Pala pala = peli.luoPala(2);
         assertTrue(pala instanceof Pensas);
     }
 
     @Test
-    public void arvoPalaPalauttaaLuvunValilta0Ja5() {
-        for (int i = 0; i < 100; i++) {
-            int luku = peli.arvoPala();
-            assertTrue("true", luku < 6 && luku > -1);
-        }
+    public void asetaPalaPalauttaaTrueJosRuutuOnTyhja() {
+     
+        boolean asetettu = peli.asetaPala(1, 1, 2);
+
+        assertTrue(asetettu);
+    }
+
+    @Test
+    public void asetaPalaPalauttaaFalseJosRuudussaOnPala() {
+        peli.asetaPala(1, 1, 2);
+        boolean asetettu = peli.asetaPala(1, 1, 2);
+
+        assertFalse(asetettu);
+
     }
 
 }

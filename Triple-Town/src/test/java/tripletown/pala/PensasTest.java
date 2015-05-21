@@ -25,18 +25,13 @@ public class PensasTest {
     
     @Before
     public void setUp() {
-        pensas = new Pensas(1, 2);
+        pensas = new Pensas();
     }
     
     @After
     public void tearDown() {
     }
 
-     @Test
-    public void ruohoAsettaaKoordinaatitOikein() {
-        assertEquals(1, pensas.getX());
-        assertEquals(2, pensas.getY());
-    }
 
     @Test
     public void ruohoPalauttaaOikeanMerkkijonoesityksen() {
