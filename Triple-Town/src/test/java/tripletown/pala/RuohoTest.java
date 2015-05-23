@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class RuohoTest {
 
-    Pala ruoho;
+    Pala pala;
 
     public RuohoTest() {
     }
@@ -24,7 +24,7 @@ public class RuohoTest {
 
     @Before
     public void setUp() {
-        ruoho = new Ruoho();
+        pala = new Ruoho(1, 2);
     }
 
     @After
@@ -34,11 +34,17 @@ public class RuohoTest {
 
     @Test
     public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("R", ruoho.toString());
+        assertEquals("1", pala.toString());
     }
     
     @Test
     public void palaPalauttaaOikeanPistemaaran() {
-        assertEquals(5, ruoho.getPisteet());
+        assertEquals(5, pala.getPisteet());
+    }
+    
+     @Test
+    public void palaPalauttaaOikeatKoordinaatit() {
+        assertEquals(1, pala.getX());
+        assertEquals(2, pala.getY());
     }
 }

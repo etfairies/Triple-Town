@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class PuuTest {
     
-    Pala puu;
+    Pala pala;
     
     public PuuTest() {
     }
@@ -26,7 +26,7 @@ public class PuuTest {
     
     @Before
     public void setUp() {
-        puu = new Puu();
+        pala = new Puu(1, 2);
     }
     
     @After
@@ -35,11 +35,18 @@ public class PuuTest {
 
     @Test
     public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("U", puu.toString());
+        assertEquals("3", pala.toString());
     }
     
     @Test
     public void palaPalauttaaOikeanPistemaaran() {
-        assertEquals(100, puu.getPisteet());
+        assertEquals(100, pala.getPisteet());
+    }
+    
+    
+    @Test
+    public void palaPalauttaaOikeatKoordinaatit() {
+        assertEquals(1, pala.getX());
+        assertEquals(2, pala.getY());
     }
 }

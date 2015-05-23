@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 
 public class PensasTest {
-    Pala pensas;
+    Pala pala;
     
     public PensasTest() {
     }
@@ -25,21 +25,26 @@ public class PensasTest {
     
     @Before
     public void setUp() {
-        pensas = new Pensas();
+        pala = new Pensas(1, 2);
     }
     
     @After
     public void tearDown() {
     }
 
-
     @Test
     public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("P", pensas.toString());
+        assertEquals("2", pala.toString());
     }
     
     @Test
     public void palaPalauttaaOikeanPistemaaran() {
-        assertEquals(20, pensas.getPisteet());
+        assertEquals(20, pala.getPisteet());
+    }
+    
+    @Test
+    public void palaPalauttaaOikeatKoordinaatit() {
+        assertEquals(1, pala.getX());
+        assertEquals(2, pala.getY());
     }
 }
