@@ -1,6 +1,6 @@
 #Aihe: Triple Town -klooni
 
-Triple Townissa rakennetaan kaupunkia yhdistelemällä samanlaisia palasia pelilaudalla. Kolmesta ruohikosta tulee pensas, kolmesta pensaasta puu, kolmesta puusta talo, jne kunnes pelilauta on täynnä taloja, kartanoita ja linnoja. Peli arpoo palaset, jotka pelaaja asettaa yksitellen pelilaudalle. Pelilaudalla voi olla myös jättikarhuja eli esteitä, joiden paikalle ei voi asettaa palasia. Pisteitä saa jokaisesta yhdistetystä palasesta niin, että pensaasta saa vähiten pisteitä, linnasta eniten. Pisteet tallenetaan tiedostoon levylle. Pelilauta on 6x6 ruudun kokoinen.
+Triple Townissa rakennetaan kaupunkia yhdistelemällä samanlaisia palasia pelilaudalla. Kolmesta ruohikosta tulee pensas, kolmesta pensaasta puu, kolmesta puusta talo, jne kunnes pelilauta on täynnä taloja, kartanoita ja linnoja. Peli arpoo palaset, jotka pelaaja asettaa yksitellen pelilaudalle. Pelilaudalla voi olla myös jättikarhuja eli esteitä, joiden paikalle ei voi asettaa palasia. Pisteitä saa jokaisesta yhdistetystä palasesta niin, että pensaasta saa vähiten pisteitä, linnasta eniten. Pisteet tallennetaan tiedostoon levylle. Pelilauta on 6x6 ruudun kokoinen.
 
 Toiminnot:
 - Pelin aloitus

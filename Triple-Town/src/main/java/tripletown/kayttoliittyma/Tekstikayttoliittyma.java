@@ -20,28 +20,32 @@ public class Tekstikayttoliittyma {
         peli.alustaPelilauta();
 
         while (true) {
-            Pala asetettu = null;
 
             System.out.println("Pisteet: " + peli.pistetilanne());
             tulostaLauta();
-            int pala = peli.arvoPala();
+            
+            if (pelilautaTaynna()) {
+                System.out.println("Peli loppui.");
+                break;
+            }
 
             while (true) {
+
+                int pala = peli.arvoPala();
                 System.out.println("Mihin ruutuun haluat asettaa palan " + palat[pala] + "? Sarake:");
                 int x = kysyKoordinaatti();
                 System.out.println("Rivi:");
                 int y = kysyKoordinaatti();
 
-                asetettu = this.peli.asetaPala(pala, x, y);
+                Pala asetettu = this.peli.asetaPala(pala, x, y);
 
                 if (asetettu != null) {
+                    peli.vierekkaistenPalojenHaku(asetettu);
                     break;
                 }
 
                 System.out.println("Ruutu ei ollut tyhjä!");
             }
-
-            peli.vierekkaistenPalojenHaku(asetettu);
 
         }
     }
@@ -82,6 +86,19 @@ public class Tekstikayttoliittyma {
             }
             System.out.println("");
         }
+    }
+
+    private boolean pelilautaTaynna() {
+        Pala[][] lauta = peli.getPelilauta();
+
+        for (int y = 0; y < 6; y++) {
+            for (int x = 0; x < 6; x++) {
+                if (lauta[x][y] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

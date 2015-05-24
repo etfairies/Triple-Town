@@ -1,11 +1,11 @@
 package tripletown.pala;
 
-public class Ruoho implements Pala {
+public class Linna implements Pala {
 
     private int x;
     private int y;
 
-    public Ruoho(int x, int y) {
+    public Linna(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,12 +22,11 @@ public class Ruoho implements Pala {
 
     @Override
     public int getPisteet() {
-        return 5;
+        return 20000;
     }
-
+    
     @Override
     public String toString() {
-        return "1";
+        return "6";
     }
-
 }

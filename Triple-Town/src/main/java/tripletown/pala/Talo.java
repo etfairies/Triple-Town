@@ -1,15 +1,16 @@
+
 package tripletown.pala;
 
-public class Ruoho implements Pala {
+
+public class Talo implements Pala {
 
     private int x;
     private int y;
-
-    public Ruoho(int x, int y) {
+    
+    public Talo(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
     @Override
     public int getX() {
         return this.x;
@@ -22,12 +23,10 @@ public class Ruoho implements Pala {
 
     @Override
     public int getPisteet() {
-        return 5;
+        return 1500;
     }
-
-    @Override
+    
     public String toString() {
-        return "1";
+        return "4";
     }
-
 }
