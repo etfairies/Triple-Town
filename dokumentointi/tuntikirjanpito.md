@@ -10,4 +10,4 @@
 |21.5. | 1,5 h	| Tekstikäyttöliittymän eriyttäminen sovelluslogiikasta, testien luominen |
 |23.5. | 4 h	| Logiikan toteutus, testien luominen |
 |24.5. | 4 h 	| Logiikan toteutus, luokkien lisäys ja testejä, graafisen käyttöliittymän luomisen kertausta |
-
+|25.5. | 1 h	| Peliin lisatty karhu testeineen |
