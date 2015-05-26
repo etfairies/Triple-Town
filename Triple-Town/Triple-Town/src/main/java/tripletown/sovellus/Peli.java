@@ -24,7 +24,7 @@ public class Peli {
         this.karhu = new Karhu(3, 3);
     }
 
-    // Alustaa pelilaudan
+    // Luo laudalle paloja ja karhun pelin alussa
     public void alustaPelilauta() {
 
         for (int i = 0; i < 15; i++) {
@@ -33,7 +33,7 @@ public class Peli {
             lauta[x][y] = luoPala(arvoPala(), x, y);
             vierekkaistenPalojenHaku(lauta[x][y]);
         }
-        lauta[3][3] = karhu;
+        lauta[this.karhu.getX()][this.karhu.getY()] = karhu;
     }
 
     // Arpoo asetettavan palan numeron
@@ -134,7 +134,7 @@ public class Peli {
         }
     }
 
-    // Yhdistaa kolme samanlaista palaa uudeksi korkeamman tason palaksi
+    // Yhdistaa kolme samanlaista palaa uudeksi korkeamman tason palaksi, lukuunottamatta linnoja
     public void yhdistaPalat(ArrayList<Pala> naapurit) {
 
         // Alkuperäisen palan palanumero + 1 luo korkeamman tason palan
@@ -167,16 +167,16 @@ public class Peli {
     public void liikutaKarhua() {
         int ruutu = arpoja.nextInt(4);
 
-        if (ruutu == 1 && getRuutu(this.karhu.getX() - 1, this.karhu.getY()) == null) {
+        if (ruutu == 0) {
             liikutaKarhuRuutuun(this.karhu.getX() - 1, this.karhu.getY());
 
-        } else if (ruutu == 2 && getRuutu(this.karhu.getX(), this.karhu.getY() - 1) == null) {
+        } else if (ruutu == 1) {
             liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() - 1);
 
-        } else if (ruutu == 3 && getRuutu(this.karhu.getX() + 1, this.karhu.getY()) == null) {
+        } else if (ruutu == 2) {
             liikutaKarhuRuutuun(this.karhu.getX() + 1, this.karhu.getY());
 
-        } else if (ruutu == 4 && getRuutu(this.karhu.getX(), this.karhu.getY() + 1) == null) {
+        } else if (ruutu == 3) {
             liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() + 1);
         }
     }
@@ -184,11 +184,13 @@ public class Peli {
     // Siirtää karhun uuteen ruutuun ja muuttaa vanhan ruudun tyhjäksi
     public void liikutaKarhuRuutuun(int x, int y) {
         try {
-            lauta[this.karhu.getX()][this.karhu.getY()] = null;
-            this.karhu.liiku(x, y);
-            lauta[x][y] = this.karhu;
+            if (lauta[x][y] == null) {
+                lauta[this.karhu.getX()][this.karhu.getY()] = null;
+                this.karhu.liiku(x, y);
+                lauta[x][y] = this.karhu;
+            }
         } catch (Exception e) {
         }
     }
-   
+
 }
