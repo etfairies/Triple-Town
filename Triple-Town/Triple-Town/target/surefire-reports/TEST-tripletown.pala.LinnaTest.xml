@@ -62,5 +62,5 @@
   </properties>
   <testcase time="0" classname="tripletown.pala.LinnaTest" name="palaPalauttaaOikeanPistemaaran"/>
   <testcase time="0" classname="tripletown.pala.LinnaTest" name="palaPalauttaaOikeanMerkkijonoesityksen"/>
-  <testcase time="0" classname="tripletown.pala.LinnaTest" name="palaPalauttaaOikeatKoordinaatit"/>
+  <testcase time="0.001" classname="tripletown.pala.LinnaTest" name="palaPalauttaaOikeatKoordinaatit"/>
 </testsuite>
