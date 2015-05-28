@@ -12,3 +12,4 @@
 |24.5. | 4 h 	| Logiikan toteutus, luokkien lisäys ja testejä, graafisen käyttöliittymän luomisen kertausta |
 |25.5. | 1 h	| Peliin lisatty karhu testeineen, luokkakaavio päivitetty |
 |27.7. | 1,5 h	| Koodikatselmointi, JavaDoc |
+|28.5. | 1 h	| Sekvenssikaavioiden laatiminen |

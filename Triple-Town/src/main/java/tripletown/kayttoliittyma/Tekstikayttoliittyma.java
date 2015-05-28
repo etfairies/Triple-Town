@@ -1,6 +1,5 @@
 package tripletown.kayttoliittyma;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import tripletown.pala.Pala;
 import tripletown.sovellus.Peli;
@@ -24,9 +23,8 @@ public class Tekstikayttoliittyma {
             System.out.println("Pisteet: " + peli.pistetilanne());
             peli.liikutaKarhua();
             tulostaLauta();
-            
+
             if (pelilautaTaynna()) {
-                System.out.println("Peli loppui.");
                 break;
             }
 
@@ -47,8 +45,9 @@ public class Tekstikayttoliittyma {
 
                 System.out.println("Ruutu ei ollut tyhjä!");
             }
-            
+
         }
+        System.out.println("Peli loppui.");
     }
 
     //Varmistaa että pelaajan antama luku on 0:n ja 5:n väliltä

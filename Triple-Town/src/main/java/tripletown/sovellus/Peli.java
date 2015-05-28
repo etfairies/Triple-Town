@@ -121,7 +121,9 @@ public class Peli {
     }
 
     /**
-     * Metodi hakee vierekkäiset samanlaiset palat ja tallettaa ne listaan.
+     * Metodi lisää vierekkäiset samanlaiset palat listaan ja kutsuu metodia yhdistaPalat jos paloja on vähintään kolme.
+     * Listan ensimmäiseksi asetetaan alkuperäinen pala, jonka vierusruutuja tarkistetaan.
+     * Jos alkuperäisellä palalla on yksi vieruspala, tarkistetaan vierekkäisen palan vierusruudut.
      * Metodi suoritetaan 5 kertaa ketjureaktion varalta
      *
      * @param pala Pala, jonka vierekkäiset ruudut tarkistetaan
@@ -150,7 +152,7 @@ public class Peli {
     /**
      * Metodi tarkistaa palan vierekkäiset ruudut
      *
-     * @param naapurit Lista palan vieressä olevista paloista
+     * @param naapurit Lista vierekkäisistä paloista
      * @param juuripala Pala, jonka vierekkäiset ruudut tarkistetaan
      */
     public void tarkistaRuudut(ArrayList<Pala> naapurit, Pala juuripala) {
@@ -164,10 +166,10 @@ public class Peli {
      * Metodi tarkistaa onko tarkasteltavassa ruudussa samantasoinen pala.
      * Alkuperäistä palaa ei enää lisätä listaan.
      *
-     * @param naapurit Lista palan vieressä olevista paloista
+     * @param naapurit Lista vierekkäisistä paloista
      * @param x Tarkistettavan ruudun x-koordinaatti
      * @param y Tarkistettavan ruudun y-koordinaatti
-     * @param palanLuokka Palan luokka. Jos ruudussa olevan palan luokka on sama
+     * @param palanLuokka Palan luokka. Jos tarkasteltavassa ruudussa olevan palan luokka on sama
      * kuin alkuperäisen palan luokka, pala lisätään listaan
      */
     public void tarkistaRuutu(ArrayList<Pala> naapurit, int x, int y, Class palanLuokka) {
@@ -186,7 +188,7 @@ public class Peli {
      * Alkuperäisen palan palanumero + 1 luo korkeamman tason palan. Korkeimman
      * tason paloja, Linnoja, ei yhdistetä uudeksi palaksi.
      *
-     * @param naapurit Lista palan vieressä olevista paloista
+     * @param naapurit Lista vierekkäisistä paloista
      */
     public void yhdistaPalat(ArrayList<Pala> naapurit) {
 
