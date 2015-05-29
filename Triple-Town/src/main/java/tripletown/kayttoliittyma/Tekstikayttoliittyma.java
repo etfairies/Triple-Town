@@ -1,5 +1,12 @@
 package tripletown.kayttoliittyma;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 import tripletown.pala.Pala;
 import tripletown.sovellus.Peli;
@@ -15,9 +22,10 @@ public class Tekstikayttoliittyma {
         this.lukija = new Scanner(System.in);
     }
 
-    public void kaynnista() {
+    public void kaynnista() throws Exception {
         peli.alustaPelilauta();
 
+        
         while (true) {
 
             System.out.println("Pisteet: " + peli.pistetilanne());
@@ -48,6 +56,7 @@ public class Tekstikayttoliittyma {
 
         }
         System.out.println("Peli loppui.");
+        tallennaPisteet();
     }
 
     //Varmistaa että pelaajan antama luku on 0:n ja 5:n väliltä
@@ -97,6 +106,44 @@ public class Tekstikayttoliittyma {
             }
         }
         return true;
+    }
+
+    private void tallennaPisteet() throws Exception {
+        File pistetilasto = new File("src/main/java/tripletown/kayttoliittyma/pistetilasto.txt");
+       
+        ArrayList<Integer> kaikkiPisteet = lueTiedosto(pistetilasto);
+       
+        tallenna(pistetilasto, kaikkiPisteet);
+       
+    }
+
+    private ArrayList<Integer> lueTiedosto(File pistetilasto) throws FileNotFoundException {
+        Scanner tiedostonlukija = new Scanner(pistetilasto);
+        ArrayList<Integer> kaikkiPisteet = new ArrayList<>();
+        kaikkiPisteet.add(peli.pistetilanne());
+        
+        tiedostonlukija.nextLine();
+        while (tiedostonlukija.hasNextLine()) {
+            String pisteet = tiedostonlukija.nextLine();
+            kaikkiPisteet.add(Integer.parseInt(pisteet));
+        }
+       
+        Collections.sort(kaikkiPisteet);
+        Collections.reverse(kaikkiPisteet);
+        return kaikkiPisteet;
+    }
+
+    private void tallenna(File pistetilasto, ArrayList<Integer> kaikkiPisteet) throws IOException {
+         try (FileWriter kirjoittaja = new FileWriter(pistetilasto)) {
+
+             kirjoittaja.write("Pistetilasto\n");
+            
+             for (int i = 0; i < kaikkiPisteet.size(); i++) {
+               kirjoittaja.append(kaikkiPisteet.get(i) + "\n");  
+             }
+            
+            kirjoittaja.close();
+        }
     }
 
 }
