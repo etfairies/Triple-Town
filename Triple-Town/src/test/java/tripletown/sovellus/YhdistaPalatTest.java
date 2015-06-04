@@ -31,8 +31,7 @@ public class YhdistaPalatTest {
 
     @Before
     public void setUp() {
-
-        peli = new Peli();
+        peli = new Peli(6, 6);
     }
 
     @After
@@ -95,6 +94,19 @@ public class YhdistaPalatTest {
     }
 
     @Test
+    public void kolmeLinnaaEiYhdisty() {
+        Pala pala = peli.asetaPala(6, 1, 1);
+        peli.asetaPala(6, 0, 1);
+        peli.asetaPala(6, 1, 0);
+
+        peli.vierekkaistenPalojenHaku(pala);
+        
+        assertTrue(peli.getRuutu(1, 1) instanceof Linna);
+        assertTrue(peli.getRuutu(0, 1) instanceof Linna);
+        assertTrue(peli.getRuutu(1, 0) instanceof Linna);
+    }
+    
+    @Test
     public void kaksiSamanlaistaPalaaEiYhdistyKorkeammanTasonPalaksi() {
         Pala pala = peli.asetaPala(1, 1, 1);
         peli.asetaPala(1, 0, 1);
@@ -116,5 +128,17 @@ public class YhdistaPalatTest {
 
         assertTrue(uusiPala instanceof Ruoho);
     }
-    
+
+    @Test
+    public void palojenYhdistaminenPoistaaPalatlaudalta() {
+        Pala pala = peli.asetaPala(1, 1, 1);
+        peli.asetaPala(1, 1, 2);
+        peli.asetaPala(1, 2, 1);
+        peli.vierekkaistenPalojenHaku(pala);
+        
+        assertNotEquals(null, peli.getRuutu(1, 1));
+        assertEquals(null, peli.getRuutu(1, 2));
+        assertEquals(null, peli.getRuutu(2, 1));
+    }
+
 }

@@ -1,29 +1,17 @@
 
 package tripletown.pala;
 
+import java.awt.font.TextAttribute;
+
 /**
  * Luokka, jolla luodaan Talo-olioita
  */
-public class Talo implements Pala {
+public class Talo extends Pala {
 
-    private int x;
-    private int y;
-    
     public Talo(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-    @Override
-    public int getX() {
-        return this.x;
+        super(x, y);
     }
 
-    @Override
-    public int getY() {
-        return this.y;
-    }
-
-    @Override
     public int getPisteet() {
         return 1500;
     }

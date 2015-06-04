@@ -16,16 +16,25 @@ import tripletown.pala.Talo;
  */
 public class Peli {
 
-    private final Pala[][] lauta = new Pala[6][6];
+    private final Pala[][] lauta;
+    private int leveys;
+    private int korkeus;
     private int pisteet;
-    Random arpoja = new Random();
+    Random arpoja;
     Karhu karhu;
 
     /**
-     * Luokan konstruktori, joka alustaa pistemääräksi nolla ja luo Karhu-olion
+     * Luokan konstruktori, joka luo pelilaudan sekä alustaa pistemääräksi nolla ja luo Karhu-olion
+     * 
+     * @param leveys    Pelilaudan leveys
+     * @param korkeus   Pelilaudan korkeus
      */
-    public Peli() {
+    public Peli(int leveys, int korkeus) {
+        this.leveys = leveys;
+        this.korkeus = korkeus;
+        this.lauta = new Pala[leveys][korkeus];
         this.pisteet = 0;
+        this.arpoja = new Random();
         this.karhu = new Karhu(3, 3);
     }
 
@@ -44,8 +53,8 @@ public class Peli {
     }
 
     /**
-     * Metodi arpoo asetettavan palan numeron. 
-     * Suurin todennäköisyys ruoholla(1), pienin talolla (4)
+     * Metodi arpoo asetettavan palan numeron. Suurin todennäköisyys
+     * ruoholla(1), pienin talolla (4)
      *
      * @return Palauttaa numeron, jonka avulla voidaan luoda uusi Pala-olio
      */
@@ -70,10 +79,10 @@ public class Peli {
      * @param pala Palanumero, joka määrää mikä Pala palautetaan
      * @param x Luotavan palan x-koordinaatti
      * @param y Luotavan palan y-koordinaatti
-     * 
+     *
      * @return Palautetaan uusi Pala-olio
      */
-    public Pala luoPala(int pala, int x, int y) {
+    private Pala luoPala(int pala, int x, int y) {
 
         if (pala == 2) {
             return new Pensas(x, y);
@@ -104,7 +113,7 @@ public class Peli {
      * @param palanumero Numero, jonka avulla luodaan tietyn tason Pala-olio
      * @param x Asetettavan palan x-koordinaatti
      * @param y Asetettavan palan y-koordinaatti
-     * 
+     *
      * @return Palauttaa luodun palan jos asettaminen onnistui, muuten palauttaa
      * null
      */
@@ -121,10 +130,11 @@ public class Peli {
     }
 
     /**
-     * Metodi lisää vierekkäiset samanlaiset palat listaan ja kutsuu metodia yhdistaPalat jos paloja on vähintään kolme.
-     * Listan ensimmäiseksi asetetaan alkuperäinen pala, jonka vierusruutuja tarkistetaan.
-     * Jos alkuperäisellä palalla on yksi vieruspala, tarkistetaan vierekkäisen palan vierusruudut.
-     * Metodi suoritetaan 5 kertaa ketjureaktion varalta
+     * Metodi lisää vierekkäiset samanlaiset palat listaan ja kutsuu metodia
+     * yhdistaPalat jos paloja on vähintään kolme. Listan ensimmäiseksi
+     * asetetaan alkuperäinen pala, jonka vierusruutuja tarkistetaan. Jos
+     * alkuperäisellä palalla on yksi vieruspala, tarkistetaan vierekkäisen
+     * palan vierusruudut. Metodi suoritetaan 5 kertaa ketjureaktion varalta
      *
      * @param pala Pala, jonka vierekkäiset ruudut tarkistetaan
      */
@@ -155,7 +165,7 @@ public class Peli {
      * @param naapurit Lista vierekkäisistä paloista
      * @param juuripala Pala, jonka vierekkäiset ruudut tarkistetaan
      */
-    public void tarkistaRuudut(ArrayList<Pala> naapurit, Pala juuripala) {
+    private void tarkistaRuudut(ArrayList<Pala> naapurit, Pala juuripala) {
         tarkistaRuutu(naapurit, juuripala.getX() - 1, juuripala.getY(), juuripala.getClass());
         tarkistaRuutu(naapurit, juuripala.getX(), juuripala.getY() - 1, juuripala.getClass());
         tarkistaRuutu(naapurit, juuripala.getX() + 1, juuripala.getY(), juuripala.getClass());
@@ -169,17 +179,18 @@ public class Peli {
      * @param naapurit Lista vierekkäisistä paloista
      * @param x Tarkistettavan ruudun x-koordinaatti
      * @param y Tarkistettavan ruudun y-koordinaatti
-     * @param palanLuokka Palan luokka. Jos tarkasteltavassa ruudussa olevan palan luokka on sama
-     * kuin alkuperäisen palan luokka, pala lisätään listaan
+     * @param palanLuokka Palan luokka. Jos tarkasteltavassa ruudussa olevan
+     * palan luokka on sama kuin alkuperäisen palan luokka, pala lisätään
+     * listaan
      */
-    public void tarkistaRuutu(ArrayList<Pala> naapurit, int x, int y, Class palanLuokka) {
-        try {
+    private void tarkistaRuutu(ArrayList<Pala> naapurit, int x, int y, Class palanLuokka) {
+        if (x >= 0 && x < this.leveys && y >= 0 && y < this.korkeus) {
+            
             if (lauta[x][y] != null && !naapurit.contains(lauta[x][y])) {
                 if (lauta[x][y].getClass() == palanLuokka) {
                     naapurit.add(lauta[x][y]);
                 }
             }
-        } catch (Exception e) {
         }
     }
 
@@ -190,7 +201,7 @@ public class Peli {
      *
      * @param naapurit Lista vierekkäisistä paloista
      */
-    public void yhdistaPalat(ArrayList<Pala> naapurit) {
+    private void yhdistaPalat(ArrayList<Pala> naapurit) {
 
         int uusiPala = Integer.parseInt(naapurit.get(0).toString()) + 1;
         int x = naapurit.get(0).getX();
@@ -207,7 +218,7 @@ public class Peli {
      *
      * @param naapurit Lista palan vieressä olevista paloista
      */
-    public void poistaPalatLaudalta(ArrayList<Pala> naapurit) {
+    private void poistaPalatLaudalta(ArrayList<Pala> naapurit) {
         for (Pala pala : naapurit) {
             lauta[pala.getX()][pala.getY()] = null;
         }
@@ -247,15 +258,32 @@ public class Peli {
      * @param x Ruudun x-koordinaatti, johon Karhu siirretään
      * @param y Ruudun y-koordinaatti, johon Karhu siirretään
      */
-    public void liikutaKarhuRuutuun(int x, int y) {
-        try {
+    private void liikutaKarhuRuutuun(int x, int y) {
+        if (x >= 0 && x < this.leveys && y >= 0 && y < this.korkeus) {
             if (lauta[x][y] == null) {
                 lauta[this.karhu.getX()][this.karhu.getY()] = null;
                 this.karhu.liiku(x, y);
                 lauta[x][y] = this.karhu;
             }
-        } catch (Exception e) {
         }
+    }
+
+    /**
+     * Metodi tarkistaa, onko tyhjiä ruutuja vielä jäljellä.
+     *
+     * @return Jos joku ruutu on tyhjä, palautetaan false. Jos kaikki ruudut
+     * ovat täynnä, palautetaan true.
+     */
+    public boolean pelilautaTaynna() {
+
+        for (int y = 0; y < 6; y++) {
+            for (int x = 0; x < 6; x++) {
+                if (this.lauta[x][y] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

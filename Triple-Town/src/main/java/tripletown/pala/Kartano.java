@@ -4,26 +4,12 @@ package tripletown.pala;
 /**
  * Luokka, jolla luodaan Kartano-olioita
  */
-public class Kartano implements Pala {
-    private int x;
-    private int y;
-    
+public class Kartano extends Pala {
+
     public Kartano(int x, int y) {
-       this.x = x;
-       this.y = y;
+       super(x, y);
     }
 
-    @Override
-    public int getX() {
-       return this.x;
-    }
-
-    @Override
-    public int getY() {
-       return this.y;
-    }
-
-    @Override
     public int getPisteet() {
         return 5000;
     }

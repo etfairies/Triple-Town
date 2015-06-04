@@ -31,7 +31,7 @@ public class LuoPalaTest {
 
     @Before
     public void setUp() {
-        peli = new Peli();
+        peli = new Peli(6, 6);
     }
 
     @After
@@ -39,56 +39,56 @@ public class LuoPalaTest {
     }
 
     @Test
-    public void luoPalaPalauttaaOlion() {
-        Pala pala = peli.luoPala(1, 1, 2);
+    public void asetaPalaPalauttaaOlionJosRuutuOnTyhja() {
+        Pala pala = peli.asetaPala(1, 1, 2);
         assertNotNull(pala);
     }
 
     @Test
-    public void luoPalaPalauttaaRuohonJosPalanumeroOnYksi() {
-        Pala pala = peli.luoPala(1, 1, 2);
+    public void asetaPalaPalauttaaRuohonJosPalanumeroOnYksi() {
+        Pala pala = peli.asetaPala(1, 1, 2);
         assertTrue(pala instanceof Ruoho);
     }
 
     @Test
-    public void luoPalaPalauttaaPensaanJosPalanumeroOnKaksi() {
-        Pala pala = peli.luoPala(2, 1, 2);
+    public void asetaPalaPalauttaaPensaanJosPalanumeroOnKaksi() {
+        Pala pala = peli.asetaPala(2, 1, 2);
         assertTrue(pala instanceof Pensas);
     }
 
     @Test
-    public void luoPalaPalauttaaPuunJosPalanumeroOnKolme() {
-        Pala pala = peli.luoPala(3, 1, 2);
+    public void asetaPalaPalauttaaPuunJosPalanumeroOnKolme() {
+        Pala pala = peli.asetaPala(3, 1, 2);
         assertTrue(pala instanceof Puu);
     }
 
     @Test
-    public void luoPalaPalauttaaTalonJosPalanumeroOnNelja() {
-        Pala pala = peli.luoPala(4, 1, 2);
+    public void asetaPalaPalauttaaTalonJosPalanumeroOnNelja() {
+        Pala pala = peli.asetaPala(4, 1, 2);
         assertTrue(pala instanceof Talo);
     }
 
     @Test
-    public void luoPalaPalauttaaKartanonJosPalanumeroOnViisi() {
-        Pala pala = peli.luoPala(5, 1, 2);
+    public void asetaPalaPalauttaaKartanonJosPalanumeroOnViisi() {
+        Pala pala = peli.asetaPala(5, 1, 2);
         assertTrue(pala instanceof Kartano);
     }
 
     @Test
-    public void luoPalaPalauttaaLinnanJosPalanumeroOnKuusi() {
-        Pala pala = peli.luoPala(6, 1, 2);
+    public void asetaPalaPalauttaaLinnanJosPalanumeroOnKuusi() {
+        Pala pala = peli.asetaPala(6, 1, 2);
         assertTrue(pala instanceof Linna);
     }
 
     @Test
-    public void luoPalaPalauttaaRuohonJosPalanumeroOnAlleYksi() {
-        Pala pala = peli.luoPala(0, 1, 2);
+    public void asetaPalaPalauttaaRuohonJosPalanumeroOnAlleYksi() {
+        Pala pala = peli.asetaPala(0, 1, 2);
         assertTrue(pala instanceof Ruoho);
     }
     
     @Test
-    public void luoPalaPalauttaaLinnanJosPalanumeroOnSuurempiKuinKuusi() {
-        Pala pala = peli.luoPala(7, 1, 2);
+    public void asetaPalaPalauttaaLinnanJosPalanumeroOnSuurempiKuinKuusi() {
+        Pala pala = peli.asetaPala(7, 1, 2);
         assertTrue(pala instanceof Linna);
     }
 }

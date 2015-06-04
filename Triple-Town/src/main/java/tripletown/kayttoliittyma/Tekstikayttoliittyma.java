@@ -16,9 +16,11 @@ public class Tekstikayttoliittyma {
     Peli peli;
     private final Scanner lukija;
     private final String[] palat = {"", "ruoho", "pensas", "puu", "talo", "kartano", "linna"};
+    private int laudanLeveys = 6;
+    private int laudanKorkeus = 6;
 
     public Tekstikayttoliittyma() {
-        this.peli = new Peli();
+        this.peli = new Peli(this.laudanLeveys, this.laudanKorkeus);
         this.lukija = new Scanner(System.in);
     }
 
@@ -32,7 +34,7 @@ public class Tekstikayttoliittyma {
             peli.liikutaKarhua();
             tulostaLauta();
 
-            if (pelilautaTaynna()) {
+            if (peli.pelilautaTaynna()) {
                 break;
             }
 
@@ -70,7 +72,7 @@ public class Tekstikayttoliittyma {
             } catch (Exception e) {
             }
 
-            if (luku >= 0 && luku <= 5) {
+            if (luku >= 0 && luku < this.laudanKorkeus && luku < this.laudanLeveys) {
                 return luku;
             }
 
@@ -96,17 +98,6 @@ public class Tekstikayttoliittyma {
         }
     }
 
-    private boolean pelilautaTaynna() {
-
-        for (int y = 0; y < 6; y++) {
-            for (int x = 0; x < 6; x++) {
-                if (peli.getRuutu(x, y) == null) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
     private void tallennaPisteet() throws Exception {
         File pistetilasto = new File("src/main/java/tripletown/kayttoliittyma/pistetilasto.txt");

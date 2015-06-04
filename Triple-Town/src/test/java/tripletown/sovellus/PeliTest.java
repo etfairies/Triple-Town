@@ -34,7 +34,7 @@ public class PeliTest {
 
     @Before
     public void setUp() {
-        peli = new Peli();
+        peli = new Peli(6, 6);
         palat = new ArrayList<>();
     }
 
@@ -85,57 +85,6 @@ public class PeliTest {
         assertEquals(5, peli.pistetilanne());
     }
 
-    @Test
-    public void tarkistaRuutuLisaaVierekkaisenPalanListaan() {
-        Pala pala = peli.asetaPala(1, 1, 1);
-        Pala toinenPala = peli.asetaPala(1, 0, 1);
-        palat.add(pala);
-
-        peli.tarkistaRuutu(palat, 0, 1, pala.getClass());
-        assertEquals(toinenPala, palat.get(1));
-    }
-
-    @Test
-    public void tarkistaRuutuEiLisaaEriTyyppistaPalaaListaan() {
-
-        Pala pala = peli.asetaPala(1, 1, 1);
-        peli.asetaPala(2, 1, 0);
-        palat.add(pala);
-
-        peli.tarkistaRuutu(palat, 1, 0, pala.getClass());
-        assertEquals(1, palat.size());
-    }
-
-    @Test
-    public void tarkistaRuutuEiTeeMitaanJosViitataanLaudanUlkopuolelle() {
-        peli.tarkistaRuutu(palat, -1, 7, null);
-    }
-
-    @Test
-    public void poistaPalatLaudaltaPoistaaPelilaudaltaListassaOlevatAlkiot() {
-
-        palat.add(peli.asetaPala(1, 1, 1));
-        palat.add(peli.asetaPala(1, 0, 1));
-        palat.add(peli.asetaPala(1, 1, 0));
-
-        peli.poistaPalatLaudalta(palat);
-        assertEquals(null, peli.getRuutu(1, 1));
-        assertEquals(null, peli.getRuutu(0, 1));
-        assertEquals(null, peli.getRuutu(1, 0));
-    }
-    
-    @Test
-    public void kolmelleVierekkaiselleLinnalleEiTehdaMitaan() {
-        palat.add(peli.asetaPala(6, 1, 1));
-        palat.add(peli.asetaPala(6, 0, 1));
-        palat.add(peli.asetaPala(6, 1, 0));
-
-        peli.yhdistaPalat(palat);
-        
-        assertTrue(peli.getRuutu(1, 1) instanceof Linna);
-        assertTrue(peli.getRuutu(0, 1) instanceof Linna);
-        assertTrue(peli.getRuutu(1, 0) instanceof Linna);
-    }
     
     @Test
     public void liikutaKarhuaLiikuttaaKarhua() {
@@ -144,9 +93,21 @@ public class PeliTest {
     }
     
     @Test
-    public void liikutaKarhuRuutuunEiLiikutaKarhuaJosViitataanPelilaudanUlkopuolelle() {
-        Karhu karhu = new Karhu(0,0);
-        peli.liikutaKarhuRuutuun(-1, 0);
-        assertEquals(0, karhu.getX());
+    public void peliLautaTaynnaPalauttaaTrueJosPelilautaOnTaynna() {
+        for (int y = 0; y < 6; y++) {
+            for (int x = 0; x < 6; x++) {
+                peli.asetaPala(1, x, y);
+            }
+        }
+        
+        assertTrue(peli.pelilautaTaynna());
+    }
+    
+    @Test
+    public void peliLautaTaynnaPalauttaaFalseJosPelilautaEiOleTaynna() {
+        peli.asetaPala(1, 3, 4);
+        peli.asetaPala(1, 2, 2);
+        
+        assertFalse(peli.pelilautaTaynna());
     }
 }

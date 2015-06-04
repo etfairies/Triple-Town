@@ -15,3 +15,5 @@
 |28.5. | 1 h	| Sekvenssikaavioiden laatiminen |
 |28.5. | 3,5 h	| Tutoriaalien vilkuilua graafisen käyttöliittymän luonnista, käyttöliittymän toteutusta |
 |29.5. | 1,5 h	| Pistetilaston tallennus toteutettu |
+|30.5. | 1,5 h	| Käyttöliittymän toteutusta ja tutoriaalien lukemista |
+|4.6.  | 3 h	| Koodikatselmoinnissa ehdotettujen muutosten tekemistä, graafisen käyttöliittymän miettimistä ja tutoriaalien etsintää |

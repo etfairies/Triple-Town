@@ -3,18 +3,21 @@ package tripletown.kayttoliittyma;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Pelilauta extends JPanel {
 
-    private int sarakkeet = 6;
-    private int rivit = 6;
+    private int leveys = 6;
+    private int korkeus = 6;
     private ArrayList<Rectangle> ruudut;
 
     public Pelilauta() {
-        ruudut = new ArrayList<>(sarakkeet * rivit);
+        ruudut = new ArrayList<>(leveys * korkeus);
     }
 
 
@@ -23,23 +26,21 @@ public class Pelilauta extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
 
-        int leveys = getWidth();
-        int korkeus = getHeight();
+        int ruudunKorkeus = 50;
+        int ruudunLeveys = 50;
 
-        int ruudunKorkeus = leveys / sarakkeet;
-        int ruudunLeveys = korkeus / rivit;
-
-        int xOffset = (leveys - (sarakkeet * ruudunLeveys)) / 2;
-        int yOffset = (korkeus - (rivit * ruudunKorkeus)) / 2;
-
+        int vasenMarginaali = (ruudunLeveys)/2;
+        int ylamarginaali = (ruudunKorkeus)/2;
+        
         if (ruudut.isEmpty()) {
-            for (int rivi = 0; rivi < rivit; rivi++) {
-                for (int sarake = 0; sarake < sarakkeet; sarake++) {
+            for (int y = 0; y < korkeus; y++) {
+                for (int x = 0; x < leveys; x++) {
                     Rectangle ruutu = new Rectangle(
-                            xOffset + (sarake * ruudunLeveys),
-                            yOffset + (rivi * ruudunKorkeus),
+                            vasenMarginaali + (x * ruudunLeveys),
+                            ylamarginaali + (y * ruudunKorkeus),
                             ruudunLeveys,
                             ruudunKorkeus);
+                   
                     ruudut.add(ruutu);
                 }
             }
@@ -49,7 +50,7 @@ public class Pelilauta extends JPanel {
         for (Rectangle ruutu : ruudut) {
             g2d.draw(ruutu);
         }
-
+      
         g2d.dispose();
     }
 }

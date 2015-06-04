@@ -1,13 +1,30 @@
 package tripletown.pala;
 
-/**
- * Yliluokka, jonka aliluokkia muut pala-oliot ovat
- */
-public interface Pala {
+public class Pala {
 
-    public int getX();
+    private int x;
+    private int y;
 
-    public int getY();
+    public Pala(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    public int getX() {
+       return this.x;
+    }
 
-    public int getPisteet();
+    public int getY() {
+       return this.y;
+    }
+    
+    public void liiku(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    public int getPisteet() {
+        return 0;
+    }
+
 }
