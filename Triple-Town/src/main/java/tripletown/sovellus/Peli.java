@@ -72,6 +72,7 @@ public class Peli {
 
         return 1;
     }
+ 
 
     /**
      * Metodi luo palaolion palanumeron perusteella.

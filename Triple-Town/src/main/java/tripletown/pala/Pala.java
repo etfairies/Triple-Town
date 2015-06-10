@@ -1,5 +1,7 @@
 package tripletown.pala;
 
+import javax.swing.JButton;
+
 public class Pala {
 
     private int x;
@@ -9,7 +11,7 @@ public class Pala {
         this.x = x;
         this.y = y;
     }
-    
+
     public int getX() {
        return this.x;
     }

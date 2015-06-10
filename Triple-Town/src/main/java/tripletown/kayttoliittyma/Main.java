@@ -6,11 +6,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Tekstikayttoliittyma tekstikayttoliittyma = new Tekstikayttoliittyma();
-        tekstikayttoliittyma.kaynnista();
+//        Tekstikayttoliittyma tekstikayttoliittyma = new Tekstikayttoliittyma();
+//        tekstikayttoliittyma.kaynnista();
 
-//      Kayttoliittyma gui = new Kayttoliittyma();
-//      SwingUtilities.invokeLater(gui);
+      Kayttoliittyma gui = new Kayttoliittyma();
+      SwingUtilities.invokeLater(gui);
         
     }
 
