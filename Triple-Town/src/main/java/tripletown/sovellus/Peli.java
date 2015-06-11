@@ -204,7 +204,7 @@ public class Peli {
      */
     private void yhdistaPalat(ArrayList<Pala> naapurit) {
 
-        int uusiPala = Integer.parseInt(naapurit.get(0).toString()) + 1;
+        int uusiPala = naapurit.get(0).getId() + 1;
         int x = naapurit.get(0).getX();
         int y = naapurit.get(0).getY();
 

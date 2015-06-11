@@ -1,7 +1,5 @@
 package tripletown.pala;
 
-import javax.swing.JButton;
-
 public class Pala {
 
     private int x;
@@ -27,6 +25,10 @@ public class Pala {
     
     public int getPisteet() {
         return 0;
+    }
+    
+    public int getId() {
+        return 1;
     }
 
 }

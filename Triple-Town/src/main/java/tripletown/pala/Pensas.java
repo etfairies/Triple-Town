@@ -9,13 +9,14 @@ public class Pensas extends Pala {
         super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 20;
     }
-
+    
     @Override
-    public String toString() {
-        return "2";
+    public int getId() {
+        return 2;
     }
 
 }

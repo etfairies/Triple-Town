@@ -18,3 +18,4 @@
 |30.5. | 1,5 h	| Käyttöliittymän toteutusta ja tutoriaalien lukemista |
 |4.6.  | 3 h	| Koodikatselmoinnissa ehdotettujen muutosten tekemistä, graafisen käyttöliittymän miettimistä ja tutoriaalien etsintää |
 |10.6. | 3,5 h	| Käyttöliittymän toteutusta |
+|11.6. | 2 h	| Käyttöliittymän toteutusta |

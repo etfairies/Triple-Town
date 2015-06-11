@@ -9,12 +9,13 @@ public class Linna extends Pala {
        super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 20000;
     }
     
     @Override
-    public String toString() {
-        return "6";
+    public int getId() {
+        return 6;
     }
 }

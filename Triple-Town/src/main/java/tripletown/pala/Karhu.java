@@ -14,8 +14,8 @@ public class Karhu extends Pala {
     }
 
     @Override
-    public String toString() {
-        return "K";
+    public int getId() {
+        return 0;
     }
     
 }

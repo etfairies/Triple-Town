@@ -9,13 +9,14 @@ public class Puu extends Pala {
         super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 100;
     }
-
+    
     @Override
-    public String toString() {
-        return "3";
+    public int getId() {
+        return 3;
     }
 
 }

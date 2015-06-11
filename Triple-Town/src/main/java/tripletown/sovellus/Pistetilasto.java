@@ -23,11 +23,10 @@ public class Pistetilasto {
      * Metodi kutsuu lueTiedosto-metodia, jonka jälkeen listaan talletetut pisteet järjestetään.
      * Tämän jälkeen metodi kutsuu tallenna -metodia.
      * 
-     * @param pisteet       Pistetilanne nykyisen pelin päättyessä
-     * @throws Exception 
+     * @param pisteet       Pistetilanne nykyisen pelin päättyessä     *  
      */
 
-    public void tallennaPisteet(int pisteet) throws Exception {
+    public void tallennaPisteet(int pisteet) {
         File pistetilasto = new File("src/main/java/tripletown/kayttoliittyma/pistetilasto.txt");
 
         
@@ -45,16 +44,21 @@ public class Pistetilasto {
      * Tiedostossa olevat pisteet talletetaan listaan.
      * 
      * @param pistetilasto      Tiedosto, johon pisteet on talletettu.
-     * @return                  Palauttaa listan, johon pisteet on talletettu.
-     * @throws                  FileNotFoundException 
+     * @return                  Palauttaa listan, johon pisteet on talletettu.     * 
      */
-    private ArrayList<Integer> lueTiedosto(File pistetilasto) throws FileNotFoundException {
-        Scanner tiedostonlukija = new Scanner(pistetilasto);
-
-        tiedostonlukija.nextLine();
-        while (tiedostonlukija.hasNextLine()) {
-            String pisteet = tiedostonlukija.nextLine();
-            kaikkiPisteet.add(Integer.parseInt(pisteet));
+    private ArrayList<Integer> lueTiedosto(File pistetilasto) {
+        try {
+            
+            Scanner tiedostonlukija = new Scanner(pistetilasto);
+            
+            tiedostonlukija.nextLine();
+            while (tiedostonlukija.hasNextLine()) {
+                String pisteet = tiedostonlukija.nextLine();
+                kaikkiPisteet.add(Integer.parseInt(pisteet));
+            }
+                    
+        } catch (FileNotFoundException ex) {
+            System.out.println("Pistetilasto-tiedostoa lukiessa tapahtui virhe.");
         }
         
         return kaikkiPisteet;
@@ -66,19 +70,21 @@ public class Pistetilasto {
      * Tiedostoon talletetaan vain 10 parasta pistetilannetta.
      * 
      * @param pistetilasto      Tiedosto, johon pisteet talletetaan.
-     * @param kaikkiPisteet     Lista, johon kaikki pisteet on talletettu.
-     * @throws IOException 
+     * @param kaikkiPisteet     Lista, johon kaikki pisteet on talletettu.     * 
      */
-    private void tallenna(File pistetilasto, ArrayList<Integer> kaikkiPisteet) throws IOException {
+    private void tallenna(File pistetilasto, ArrayList<Integer> kaikkiPisteet) {
         try (FileWriter kirjoittaja = new FileWriter(pistetilasto)) {
 
             kirjoittaja.write("Pistetilasto\n");
 
-            for (int i = 0; i <= 10; i++) {
+            for (int i = 0; i < 10; i++) {
                 kirjoittaja.append(kaikkiPisteet.get(i) + "\n");
             }
 
             kirjoittaja.close();
+            
+        } catch (IOException ex) {
+            System.out.println("Tiedostoon kirjoittaessa tapahtui virhe.");
         }
     }
 }

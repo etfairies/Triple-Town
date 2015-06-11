@@ -1,7 +1,6 @@
 
 package tripletown.pala;
 
-import java.awt.font.TextAttribute;
 
 /**
  * Luokka, jolla luodaan Talo-olioita
@@ -12,11 +11,13 @@ public class Talo extends Pala {
         super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 1500;
     }
     
-    public String toString() {
-        return "4";
+    @Override
+    public int getId() {
+        return 4;
     }
 }

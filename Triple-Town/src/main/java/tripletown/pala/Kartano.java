@@ -10,12 +10,13 @@ public class Kartano extends Pala {
        super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 5000;
     }
     
     @Override
-    public String toString() {
-        return "5";
+    public int getId() {
+        return 5;
     }
 }

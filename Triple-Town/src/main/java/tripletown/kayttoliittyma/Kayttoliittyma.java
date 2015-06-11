@@ -3,6 +3,7 @@ package tripletown.kayttoliittyma;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import tripletown.sovellus.Peli;
@@ -16,7 +17,15 @@ public class Kayttoliittyma implements Runnable {
     private final int korkeus = 6;
     private final JButton[][] ruudut;
     private int arvottuPala;
-    private final Pistetilasto tilasto;
+    private Pistetilasto tilasto;
+    private final String[] kuvat = {
+        "src/main/java/tripletown/kayttoliittyma/kuvat/karhu.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/ruoho.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/pensas.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/puu.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/talo.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/kartano.png", 
+        "src/main/java/tripletown/kayttoliittyma/kuvat/linna.png"};
 
     /**
      * Luokka luo pelin graafisen käyttöliittymän.
@@ -38,7 +47,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setLocationRelativeTo(null);
         frame.pack();
 
-        lisaaKomponentit();
+        lisaaRuudukko();
         frame.setVisible(true);
 
         peli.alustaPelilauta();
@@ -53,7 +62,7 @@ public class Kayttoliittyma implements Runnable {
     /**
      * Metodi luo peliruudut ja lisää ne frameen.
      */
-    private void lisaaKomponentit() {
+    private void lisaaRuudukko() {
 
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
@@ -77,9 +86,6 @@ public class Kayttoliittyma implements Runnable {
 
         peli.liikutaKarhua();
 
-        this.arvottuPala = peli.arvoPala();
-        System.out.print(arvottuPala);
-
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
 
@@ -87,6 +93,13 @@ public class Kayttoliittyma implements Runnable {
             }
         }
 
+        if (peli.pelilautaTaynna()) {
+            tallennaPisteet();
+
+        } else {
+            this.arvottuPala = peli.arvoPala();
+            System.out.print(arvottuPala);
+        }
     }
 
     /**
@@ -96,23 +109,34 @@ public class Kayttoliittyma implements Runnable {
      * @param y Ruudun y-koordinaatti
      */
     private void asetaRuudunSisalto(int x, int y) {
-        String sisalto = "";
 
         if (peli.getRuutu(x, y) != null) {
-            sisalto = peli.getRuutu(x, y).toString();
+            int palanumero = peli.getRuutu(x, y).getId();
+            
+                ruudut[x][y].setIcon(new ImageIcon(kuvat[palanumero]));
+            }
+        else {
+            ruudut[x][y].setIcon(null);
         }
 
-        ruudut[x][y].setText(sisalto);
     }
 
     /**
-     * Metodi palauttaa Kuuntelijalle Palan, joka on sillä hetkellä
-     * asetettavana.
+     * Metodi palauttaa Palan, joka on sillä hetkellä asetettavana.
      *
-     * @return palauttaa asetettavan Palan palanumeron.
+     * @return Palauttaa asetettavan Palan palanumeron.
      */
     public int getArvottuPala() {
         return this.arvottuPala;
+    }
+
+    /**
+     * Metodi hakee pelin lopussa kertyneet pisteet ja lähettää käskyn tallettaa
+     * pisteet.
+     */
+    private void tallennaPisteet() {
+        tilasto = new Pistetilasto();
+        tilasto.tallennaPisteet(peli.pistetilanne());
     }
 
 }

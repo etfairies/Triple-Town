@@ -9,13 +9,14 @@ public class Ruoho extends Pala {
        super(x, y);
     }
 
+    @Override
     public int getPisteet() {
         return 5;
     }
-
+    
     @Override
-    public String toString() {
-        return "1";
+    public int getId() {
+        return 1;
     }
 
 }
