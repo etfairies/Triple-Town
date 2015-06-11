@@ -1,10 +1,10 @@
 
-package tripletown.kayttoliittyma;
+package tripletown.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class PistetilastonKuuntelija implements ActionListener {
+public class PistetilastonKuuntelija implements ActionListener {
 
     public PistetilastonKuuntelija() {
     }

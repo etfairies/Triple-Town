@@ -30,15 +30,15 @@ public class KarhuTest {
     @After
     public void tearDown() {
     }
-
-    @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("K", karhu.toString());
-    }
     
     @Test
     public void palaPalauttaaOikeanPistemaaran() {
         assertEquals(0, karhu.getPisteet());
+    }
+    
+    @Test
+    public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(0, karhu.getId());
     }
     
     @Test

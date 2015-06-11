@@ -33,8 +33,8 @@ public class RuohoTest {
 
 
     @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("1", pala.toString());
+    public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(1, pala.getId());
     }
     
     @Test

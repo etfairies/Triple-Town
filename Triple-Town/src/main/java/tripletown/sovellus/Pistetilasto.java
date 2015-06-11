@@ -76,7 +76,10 @@ public class Pistetilasto {
 
             kirjoittaja.write("Pistetilasto\n");
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < kaikkiPisteet.size(); i++) {
+                if (i > 10) {
+                    return;
+                }
                 kirjoittaja.append(kaikkiPisteet.get(i) + "\n");
             }
 

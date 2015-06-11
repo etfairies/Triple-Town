@@ -39,8 +39,8 @@ public class TaloTest {
     }
 
    @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("4", pala.toString());
+    public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(4, pala.getId());
     }
     
     @Test

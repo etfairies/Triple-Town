@@ -34,8 +34,8 @@ public class PuuTest {
     }
 
     @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("3", pala.toString());
+   public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(3, pala.getId());
     }
     
     @Test

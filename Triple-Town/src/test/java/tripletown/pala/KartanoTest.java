@@ -33,8 +33,8 @@ public class KartanoTest {
     }
 
     @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("5", pala.toString());
+    public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(5, pala.getId());
     }
     
     @Test

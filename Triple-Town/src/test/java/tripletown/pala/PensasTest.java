@@ -33,8 +33,8 @@ public class PensasTest {
     }
 
     @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("2", pala.toString());
+   public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(2, pala.getId());
     }
     
     @Test

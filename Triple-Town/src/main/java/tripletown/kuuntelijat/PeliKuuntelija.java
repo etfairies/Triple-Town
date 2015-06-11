@@ -1,7 +1,8 @@
-package tripletown.kayttoliittyma;
+package tripletown.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import tripletown.kayttoliittyma.Kayttoliittyma;
 import tripletown.pala.Pala;
 import tripletown.sovellus.Peli;
 

@@ -39,8 +39,8 @@ public class LinnaTest {
     }
 
    @Test
-    public void palaPalauttaaOikeanMerkkijonoesityksen() {
-        assertEquals("6", pala.toString());
+    public void palaPalauttaaOikeanPalanumeron() {
+        assertEquals(6, pala.getId());
     }
     
     @Test

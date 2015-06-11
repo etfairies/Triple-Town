@@ -1,11 +1,11 @@
 
-package tripletown.kayttoliittyma;
+package tripletown.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-class LopetaPeliKuuntelija implements ActionListener {
+public class LopetaPeliKuuntelija implements ActionListener {
 
     public LopetaPeliKuuntelija()  {
         

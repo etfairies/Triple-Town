@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import tripletown.kuuntelijat.AloitaPeliKuuntelija;
+import tripletown.kuuntelijat.LopetaPeliKuuntelija;
+import tripletown.kuuntelijat.PeliKuuntelija;
+import tripletown.kuuntelijat.PistetilastonKuuntelija;
 import tripletown.sovellus.Peli;
 import tripletown.sovellus.Pistetilasto;
 
@@ -43,13 +47,15 @@ public class Kayttoliittyma implements Runnable {
         tilasto = new Pistetilasto();
     }
 
+    /**
+     * Metodi luo sovelluksen kehyksen ja lisää siihen aloitusruudun.
+     */
     @Override
     public void run() {
         frame = new JFrame("Triple Town");
         frame.setPreferredSize(new Dimension(400, 420));
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout(new GridLayout(leveys, korkeus));
 
         frame.setLayout(new BorderLayout());
         frame.setResizable(false);
@@ -57,11 +63,7 @@ public class Kayttoliittyma implements Runnable {
         frame.pack();
 
         luoAloitusRuutu();
-//        lisaaRuudukko();
         frame.setVisible(true);
-//
-//        peli.alustaPelilauta();
-//        paivita();
 
     }
 
@@ -69,30 +71,21 @@ public class Kayttoliittyma implements Runnable {
         return frame;
     }
 
+    /**
+     * Metodi luo peliruudun komponentit.
+     */
     public void aloitaPeli() {
-        JPanel ylaPalkki = new JPanel();
-        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
-        
-        seuraavaPala = new JLabel("  Aseta " + getArvottuPala());
-        JButton lopetaNappi = new JButton("Lopeta");
-        lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
-
-        ylaPalkki.add(pisteet);
-        ylaPalkki.add(seuraavaPala);
-        ylaPalkki.add(lopetaNappi);
-
-        JPanel peliruudukko = luoRuudukko();
 
         frame.remove(aloitusPaneeli);
-        
-        frame.add(ylaPalkki, BorderLayout.NORTH);
-        frame.add(peliruudukko);
+
+        frame.add(luoPeliruudunYlaPalkki(), BorderLayout.NORTH);
+        frame.add(luoRuudukko());
         peli.alustaPelilauta();
         paivita();
     }
 
     /**
-     * Metodi luo peliruudut ja lisää ne frameen.
+     * Metodi luo peliruudut ja lisää ne kehykseen.
      */
     private JPanel luoRuudukko() {
 
@@ -101,17 +94,21 @@ public class Kayttoliittyma implements Runnable {
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
 
-                JButton ruutu = new JButton();
-
-                ruutu.addActionListener(new PeliKuuntelija(peli, this, x, y));
-                ruutu.setBackground(Color.green);
-                ruudut[x][y] = ruutu;
-
-                ruudukko.add(ruutu);
+                ruudukko.add(luoRuutu(x, y));
             }
         }
 
         return ruudukko;
+    }
+
+    private JButton luoRuutu(int x, int y) {
+        JButton ruutu = new JButton();
+
+        ruutu.addActionListener(new PeliKuuntelija(peli, this, x, y));
+        ruutu.setBackground(Color.green);
+        ruudut[x][y] = ruutu;
+
+        return ruutu;
     }
 
     /**
@@ -121,7 +118,7 @@ public class Kayttoliittyma implements Runnable {
     public void paivita() {
 
         pisteet.setText("Pisteet: " + peli.pistetilanne());
-        
+
         peli.liikutaKarhua();
 
         for (int y = 0; y < korkeus; y++) {
@@ -133,11 +130,11 @@ public class Kayttoliittyma implements Runnable {
 
         if (peli.pelilautaTaynna()) {
             tallennaPisteet();
-
-        } else {
-            this.arvottuPala = peli.arvoPala();
-            seuraavaPala.setText(" Aseta " + palat[arvottuPala]);
         }
+        
+        this.arvottuPala = peli.arvoPala();
+        seuraavaPala.setText(" Aseta " + palat[arvottuPala]);
+
     }
 
     /**
@@ -176,12 +173,14 @@ public class Kayttoliittyma implements Runnable {
         tilasto.tallennaPisteet(peli.pistetilanne());
     }
 
+    /**
+     * Metodi luo aloitusruudun napit.
+     */
     private void luoAloitusRuutu() {
         aloitusPaneeli = new JPanel();
         JButton pelaaNappi = new JButton("Pelaa");
         JButton pisteetNappi = new JButton("Pistetilasto");
         JButton lopetaNappi = new JButton("Lopeta");
-
         pelaaNappi.addActionListener(new AloitaPeliKuuntelija(this));
         pisteetNappi.addActionListener(new PistetilastonKuuntelija());
         lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
@@ -190,6 +189,21 @@ public class Kayttoliittyma implements Runnable {
         aloitusPaneeli.add(pisteetNappi);
         aloitusPaneeli.add(lopetaNappi);
         frame.add(aloitusPaneeli);
+    }
+
+    private JPanel luoPeliruudunYlaPalkki() {
+        JPanel ylaPalkki = new JPanel();
+        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
+
+        seuraavaPala = new JLabel("  Aseta " + getArvottuPala());
+        JButton lopetaNappi = new JButton("Lopeta");
+        lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
+
+        ylaPalkki.add(pisteet);
+        ylaPalkki.add(seuraavaPala);
+        ylaPalkki.add(lopetaNappi);
+
+        return ylaPalkki;
     }
 
 }

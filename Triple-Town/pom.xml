@@ -30,11 +30,23 @@
                 </configuration>
                 <version>3.2</version>
             </plugin>
+            
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
+                <configuration>
+                    <targetClasses>
+                        <param>tripletown.sovellus.*</param>
+                        <param>tripletown.pala.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>tripletown.sovellus.*</param>
+                        <param>tripletown.pala.*</param>
+                    </targetTests>
+                </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -54,6 +66,7 @@
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>2.4</version>
             </plugin>
+            
          
         </plugins>
     </build>

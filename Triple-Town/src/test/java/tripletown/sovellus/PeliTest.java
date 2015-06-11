@@ -8,13 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import tripletown.pala.Karhu;
-import tripletown.pala.Kartano;
-import tripletown.pala.Linna;
 import tripletown.pala.Pala;
-import tripletown.pala.Pensas;
-import tripletown.pala.Puu;
-import tripletown.pala.Ruoho;
-import tripletown.pala.Talo;
 
 public class PeliTest {
 
@@ -86,11 +80,7 @@ public class PeliTest {
     }
 
     
-    @Test
-    public void liikutaKarhuaLiikuttaaKarhua() {
-        peli.liikutaKarhua();
-        assertTrue(peli.getRuutu(3, 3) == null);
-    }
+    
     
     @Test
     public void peliLautaTaynnaPalauttaaTrueJosPelilautaOnTaynna() {
@@ -109,5 +99,24 @@ public class PeliTest {
         peli.asetaPala(1, 2, 2);
         
         assertFalse(peli.pelilautaTaynna());
+    }
+    
+    @Test
+    public void liikutaKarhuaLiikuttaaKarhua() {
+   
+        peli.liikutaKarhua();
+        assertTrue(peli.getRuutu(3, 3) == null);
+    }
+    
+    @Test
+    public void karhuEiLiikuJosSeOnAnsassa() {
+
+        peli.asetaPala(1, 3, 4);
+        peli.asetaPala(1, 3, 2);
+        peli.asetaPala(1, 2, 3);
+        peli.asetaPala(1, 4, 3);
+        
+        peli.liikutaKarhua();
+        assertTrue(peli.getRuutu(3, 3) instanceof Karhu);
     }
 }

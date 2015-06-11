@@ -36,6 +36,7 @@ public class Peli {
         this.pisteet = 0;
         this.arpoja = new Random();
         this.karhu = new Karhu(3, 3);
+        lauta[this.karhu.getX()][this.karhu.getY()] = karhu;
     }
 
     /**
@@ -49,7 +50,7 @@ public class Peli {
             lauta[x][y] = luoPala(arvoPala(), x, y);
             vierekkaistenPalojenHaku(lauta[x][y]);
         }
-        lauta[this.karhu.getX()][this.karhu.getY()] = karhu;
+        
         this.pisteet = 0;
     }
 

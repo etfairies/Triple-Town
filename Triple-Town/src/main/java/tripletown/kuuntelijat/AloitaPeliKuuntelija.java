@@ -1,13 +1,14 @@
 
-package tripletown.kayttoliittyma;
+package tripletown.kuuntelijat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import tripletown.kayttoliittyma.Kayttoliittyma;
 
 
-class AloitaPeliKuuntelija implements ActionListener {
+public class AloitaPeliKuuntelija implements ActionListener {
 
-    private Kayttoliittyma kl;
+    private final Kayttoliittyma kl;
     
     public AloitaPeliKuuntelija(Kayttoliittyma kl) {
         this.kl = kl;

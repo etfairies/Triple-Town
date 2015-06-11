@@ -19,4 +19,4 @@
 |4.6.  | 3 h	| Koodikatselmoinnissa ehdotettujen muutosten tekemistä, graafisen käyttöliittymän miettimistä ja tutoriaalien etsintää |
 |10.6. | 3,5 h	| Käyttöliittymän toteutusta |
 |11.6. | 2 h	| Käyttöliittymän toteutusta |
-|11.6. | 0,5 h 	| Sekvenssikaavion laatiminen |
+|11.6. | 2,5 h 	| Sekvenssikaavioiden, luokkakaavion ja testien päivitystä,  käyttöliittymän toteutusta |
