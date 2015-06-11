@@ -27,9 +27,8 @@ public class Pistetilasto {
      */
 
     public void tallennaPisteet(int pisteet) {
-        File pistetilasto = new File("src/main/java/tripletown/kayttoliittyma/pistetilasto.txt");
+        File pistetilasto = new File("src/main/resources/pistetilasto.txt");
 
-        
         kaikkiPisteet = lueTiedosto(pistetilasto);
         kaikkiPisteet.add(pisteet);
         
@@ -58,7 +57,7 @@ public class Pistetilasto {
             }
                     
         } catch (FileNotFoundException ex) {
-            System.out.println("Pistetilasto-tiedostoa lukiessa tapahtui virhe.");
+            System.out.println("Pistetilasto -tiedostoa lukiessa tapahtui virhe.");
         }
         
         return kaikkiPisteet;

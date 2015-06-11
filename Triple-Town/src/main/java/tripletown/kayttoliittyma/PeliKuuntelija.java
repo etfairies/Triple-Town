@@ -9,7 +9,7 @@ import tripletown.sovellus.Peli;
  * Luokka hoitaa peliruudussa tapahtuvat klikkaukset.
  * 
  */
-public class Kuuntelija implements ActionListener {
+public class PeliKuuntelija implements ActionListener {
 
     private final Peli peli;
     private final Kayttoliittyma gui;
@@ -17,14 +17,13 @@ public class Kuuntelija implements ActionListener {
     private final int y;
     
 
-    public Kuuntelija(Peli peli, Kayttoliittyma gui, int x, int y) {
+    public PeliKuuntelija(Peli peli, Kayttoliittyma gui, int x, int y) {
         this.peli = peli;
         this.gui = gui;
         this.x = x;
         this.y = y;
     }
 
-    
     /**
      * Metodi hoitaa palan asettamisen tyhjään ruutuun.
      * @param ae 

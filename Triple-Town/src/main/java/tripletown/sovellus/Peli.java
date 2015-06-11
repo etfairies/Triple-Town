@@ -17,8 +17,8 @@ import tripletown.pala.Talo;
 public class Peli {
 
     private final Pala[][] lauta;
-    private int leveys;
-    private int korkeus;
+    private final int leveys;
+    private final int korkeus;
     private int pisteet;
     Random arpoja;
     Karhu karhu;
@@ -44,12 +44,13 @@ public class Peli {
     public void alustaPelilauta() {
 
         for (int i = 0; i < 15; i++) {
-            int x = arpoja.nextInt(6);
-            int y = arpoja.nextInt(6);
+            int x = arpoja.nextInt(this.leveys);
+            int y = arpoja.nextInt(this.korkeus);
             lauta[x][y] = luoPala(arvoPala(), x, y);
             vierekkaistenPalojenHaku(lauta[x][y]);
         }
         lauta[this.karhu.getX()][this.karhu.getY()] = karhu;
+        this.pisteet = 0;
     }
 
     /**
@@ -277,8 +278,8 @@ public class Peli {
      */
     public boolean pelilautaTaynna() {
 
-        for (int y = 0; y < 6; y++) {
-            for (int x = 0; x < 6; x++) {
+        for (int y = 0; y < this.korkeus; y++) {
+            for (int x = 0; x <this.leveys; x++) {
                 if (this.lauta[x][y] == null) {
                     return false;
                 }
