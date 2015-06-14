@@ -7,9 +7,6 @@ import java.awt.event.ActionListener;
 
 public class LopetaPeliKuuntelija implements ActionListener {
 
-    public LopetaPeliKuuntelija()  {
-        
-    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {

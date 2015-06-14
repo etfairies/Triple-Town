@@ -59,9 +59,10 @@ public class Kayttoliittyma implements Runnable {
 
         frame.setLayout(new BorderLayout());
         frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
 
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        
         luoAloitusRuutu();
         frame.setVisible(true);
 
@@ -131,7 +132,7 @@ public class Kayttoliittyma implements Runnable {
         if (peli.pelilautaTaynna()) {
             tallennaPisteet();
         }
-        
+
         this.arvottuPala = peli.arvoPala();
         seuraavaPala.setText(" Aseta " + palat[arvottuPala]);
 
