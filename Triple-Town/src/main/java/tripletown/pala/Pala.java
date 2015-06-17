@@ -1,5 +1,8 @@
 package tripletown.pala;
 
+/**
+ * Kaikkien Pala-olioiden yliluokka, jonka avulla luodaan muut Pala-oliot
+ */
 public class Pala {
 
     private int x;

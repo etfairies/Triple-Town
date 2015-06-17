@@ -18,4 +18,5 @@ public class Karhu extends Pala {
         return 0;
     }
     
+    
 }

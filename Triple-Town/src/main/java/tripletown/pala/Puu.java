@@ -13,7 +13,7 @@ public class Puu extends Pala {
     public int getPisteet() {
         return 100;
     }
-    
+
     @Override
     public int getId() {
         return 3;

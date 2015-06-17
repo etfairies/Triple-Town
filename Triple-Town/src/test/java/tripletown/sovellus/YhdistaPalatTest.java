@@ -140,5 +140,16 @@ public class YhdistaPalatTest {
         assertEquals(null, peli.getRuutu(1, 2));
         assertEquals(null, peli.getRuutu(2, 1));
     }
+    
+    @Test
+    public void kolmeRivissaOlevaaPalaaYhdistyy() {
+        Pala pala = peli.asetaPala(1, 1, 1);
+        peli.asetaPala(1, 2, 1);
+        peli.asetaPala(1, 3, 1);
+        
+        peli.vierekkaistenPalojenHaku(pala);
+        assertTrue(peli.getRuutu(1, 1) instanceof Pensas);
+    }
+  
 
 }

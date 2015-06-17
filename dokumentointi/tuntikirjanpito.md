@@ -21,3 +21,4 @@
 |11.6. | 2 h   | Käyttöliittymän toteutusta |
 |11.6. | 2,5 h | Sekvenssikaavioiden, luokkakaavion ja testien päivitystä,  käyttöliittymän toteutusta |
 |14.6. | 1 h   | Koodikatselmointi |
+|17.6. | 2 h   | Dokumentointi tehty valmiiksi, pieniä parannuskokeiluja koodiin |

@@ -1,6 +1,4 @@
-
 package tripletown.pala;
-
 
 /**
  * Luokka, jolla luodaan Talo-olioita
@@ -15,7 +13,7 @@ public class Talo extends Pala {
     public int getPisteet() {
         return 1500;
     }
-    
+
     @Override
     public int getId() {
         return 4;

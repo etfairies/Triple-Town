@@ -20,20 +20,20 @@ public class Peli {
     private final int leveys;
     private final int korkeus;
     private int pisteet;
-    Random arpoja;
-    Karhu karhu;
+    private Random arpoja;
+    private Karhu karhu;
 
     /**
-     * Luokan konstruktori, joka luo pelilaudan sekä alustaa pistemääräksi nolla ja luo Karhu-olion
-     * 
-     * @param leveys    Pelilaudan leveys
-     * @param korkeus   Pelilaudan korkeus
+     * Luokan konstruktori, joka luo pelilaudan sekä alustaa pistemääräksi nolla
+     * ja luo Karhu-olion
+     *
+     * @param leveys Pelilaudan leveys
+     * @param korkeus Pelilaudan korkeus
      */
     public Peli(int leveys, int korkeus) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.lauta = new Pala[leveys][korkeus];
-        this.pisteet = 0;
         this.arpoja = new Random();
         this.karhu = new Karhu(3, 3);
         lauta[this.karhu.getX()][this.karhu.getY()] = karhu;
@@ -47,10 +47,10 @@ public class Peli {
         for (int i = 0; i < 15; i++) {
             int x = arpoja.nextInt(this.leveys);
             int y = arpoja.nextInt(this.korkeus);
-            lauta[x][y] = luoPala(arvoPala(), x, y);
+            asetaPala(arvoPala(), x, y);
             vierekkaistenPalojenHaku(lauta[x][y]);
         }
-        
+
         this.pisteet = 0;
     }
 
@@ -74,7 +74,6 @@ public class Peli {
 
         return 1;
     }
- 
 
     /**
      * Metodi luo palaolion palanumeron perusteella.
@@ -144,7 +143,6 @@ public class Peli {
     public void vierekkaistenPalojenHaku(Pala pala) {
 
         for (int i = 0; i < 5; i++) {
-
             Pala juuripala = lauta[pala.getX()][pala.getY()];
 
             ArrayList<Pala> naapurit = new ArrayList<>();
@@ -188,7 +186,7 @@ public class Peli {
      */
     private void tarkistaRuutu(ArrayList<Pala> naapurit, int x, int y, Class palanLuokka) {
         if (x >= 0 && x < this.leveys && y >= 0 && y < this.korkeus) {
-            
+
             if (lauta[x][y] != null && !naapurit.contains(lauta[x][y])) {
                 if (lauta[x][y].getClass() == palanLuokka) {
                     naapurit.add(lauta[x][y]);
@@ -280,7 +278,7 @@ public class Peli {
     public boolean pelilautaTaynna() {
 
         for (int y = 0; y < this.korkeus; y++) {
-            for (int x = 0; x <this.leveys; x++) {
+            for (int x = 0; x < this.leveys; x++) {
                 if (this.lauta[x][y] == null) {
                     return false;
                 }

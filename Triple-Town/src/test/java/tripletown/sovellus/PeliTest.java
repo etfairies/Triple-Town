@@ -44,7 +44,6 @@ public class PeliTest {
         }
     }
 
-
     @Test
     public void asetaPalaPalauttaaPalanJosRuutuOnTyhja() {
         Pala asetettu = peli.asetaPala(1, 1, 2);
@@ -62,6 +61,7 @@ public class PeliTest {
 
     @Test
     public void pistetilanneOnAlussaNolla() {
+        peli.alustaPelilauta();
         assertEquals(0, peli.pistetilanne());
     }
 
@@ -79,9 +79,6 @@ public class PeliTest {
         assertEquals(5, peli.pistetilanne());
     }
 
-    
-    
-    
     @Test
     public void peliLautaTaynnaPalauttaaTrueJosPelilautaOnTaynna() {
         for (int y = 0; y < 6; y++) {
@@ -89,25 +86,25 @@ public class PeliTest {
                 peli.asetaPala(1, x, y);
             }
         }
-        
+
         assertTrue(peli.pelilautaTaynna());
     }
-    
+
     @Test
     public void peliLautaTaynnaPalauttaaFalseJosPelilautaEiOleTaynna() {
         peli.asetaPala(1, 3, 4);
         peli.asetaPala(1, 2, 2);
-        
+
         assertFalse(peli.pelilautaTaynna());
     }
-    
+
     @Test
     public void liikutaKarhuaLiikuttaaKarhua() {
-   
         peli.liikutaKarhua();
+
         assertTrue(peli.getRuutu(3, 3) == null);
     }
-    
+
     @Test
     public void karhuEiLiikuJosSeOnAnsassa() {
 
@@ -115,7 +112,7 @@ public class PeliTest {
         peli.asetaPala(1, 3, 2);
         peli.asetaPala(1, 2, 3);
         peli.asetaPala(1, 4, 3);
-        
+
         peli.liikutaKarhua();
         assertTrue(peli.getRuutu(3, 3) instanceof Karhu);
     }

@@ -7,7 +7,7 @@ import tripletown.pala.Pala;
 import tripletown.sovellus.Peli;
 
 /**
- * Luokka hoitaa peliruudussa tapahtuvat klikkaukset.
+ * Luokka kuuntelee pelilaudan ruudussa tapahtuvia klikkauksia.
  * 
  */
 public class PeliKuuntelija implements ActionListener {

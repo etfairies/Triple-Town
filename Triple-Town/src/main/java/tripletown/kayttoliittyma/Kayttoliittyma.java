@@ -62,7 +62,7 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setLocationRelativeTo(null);
-        
+
         luoAloitusRuutu();
         frame.setVisible(true);
 
@@ -148,8 +148,8 @@ public class Kayttoliittyma implements Runnable {
 
         if (peli.getRuutu(x, y) != null) {
             int palanumero = peli.getRuutu(x, y).getId();
-
             ruudut[x][y].setIcon(new ImageIcon(kuvat[palanumero]));
+
         } else {
             ruudut[x][y].setIcon(null);
         }
@@ -192,6 +192,12 @@ public class Kayttoliittyma implements Runnable {
         frame.add(aloitusPaneeli);
     }
 
+    /**
+     * Metodi luo peliruudun yläpalkin, jossa näkyvät pisteet, asetettava pala
+     * ja Lopeta-nappi.
+     *
+     * @return palauttaa yläpalkki-paneelin.
+     */
     private JPanel luoPeliruudunYlaPalkki() {
         JPanel ylaPalkki = new JPanel();
         pisteet = new JLabel("Pisteet: " + peli.pistetilanne());

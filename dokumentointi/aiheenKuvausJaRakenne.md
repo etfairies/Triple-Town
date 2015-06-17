@@ -7,3 +7,11 @@ Toiminnot:
 - Palasen asettaminen pelilaudalle
 - Pelin lopetus
 - Pistetilaston tarkastelu
+
+##Ohjelman rakenne:
+Ohjelma koostuu Käyttöliittymä -luokasta joka luo graafisen käyttöliittymän, logiikkaluokasta Peli jossa on pelin logiikka, sekä Pala-luokasta ja sen aliluokista, joihin on tallennettu kunkin palan koordinaatit ja pisteet. Luokka Pistetilasto hoitaa pisteiden lukemisen ja tallettamisen tekstitiedostoon.
+
+Käyttöliittymä kommunikoi Peli-luokan kanssa, joka hoitaa varsinaiset muutokset pelilaudalla. Peli-luokka luo Pala-olioita.
+
+Käyttöliittymä luo kuuntelijat aloitusruudun napeille ja pelilaudan ruuduille.
+
