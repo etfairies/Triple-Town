@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
     private JPanel aloitusPaneeli;
+    private JPanel pistePaneeli;
     private JLabel seuraavaPala;
     private JLabel pisteet;
     private final Peli peli;
@@ -153,7 +155,6 @@ public class Kayttoliittyma implements Runnable {
         } else {
             ruudut[x][y].setIcon(null);
         }
-
     }
 
     /**
@@ -183,13 +184,16 @@ public class Kayttoliittyma implements Runnable {
         JButton pisteetNappi = new JButton("Pistetilasto");
         JButton lopetaNappi = new JButton("Lopeta");
         pelaaNappi.addActionListener(new AloitaPeliKuuntelija(this));
-        pisteetNappi.addActionListener(new PistetilastonKuuntelija());
+        pisteetNappi.addActionListener(new PistetilastonKuuntelija(this));
         lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
 
         aloitusPaneeli.add(pelaaNappi);
         aloitusPaneeli.add(pisteetNappi);
         aloitusPaneeli.add(lopetaNappi);
-        frame.add(aloitusPaneeli);
+
+        pistePaneeli = new JPanel();
+        frame.add(aloitusPaneeli, BorderLayout.NORTH);
+        frame.add(pistePaneeli);
     }
 
     /**
@@ -200,8 +204,8 @@ public class Kayttoliittyma implements Runnable {
      */
     private JPanel luoPeliruudunYlaPalkki() {
         JPanel ylaPalkki = new JPanel();
-        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
 
+        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
         seuraavaPala = new JLabel("  Aseta " + getArvottuPala());
         JButton lopetaNappi = new JButton("Lopeta");
         lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
@@ -211,6 +215,22 @@ public class Kayttoliittyma implements Runnable {
         ylaPalkki.add(lopetaNappi);
 
         return ylaPalkki;
+    }
+
+    public void luoPistetilastoruutu() {
+        List<Integer> kaikkiPisteet = tilasto.lueTiedosto();
+        
+
+        JLabel p = new JLabel("Pistetilasto");
+        pistePaneeli.add(p);
+
+        for (int i = 0; i < kaikkiPisteet.size(); i++) {
+            JLabel piste = new JLabel(i + ": " + kaikkiPisteet.get(i));
+            pistePaneeli.add(piste);
+        }
+        
+//        frame.add(pistePaneeli, BorderLayout.CENTER);
+
     }
 
 }

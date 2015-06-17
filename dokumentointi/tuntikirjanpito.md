@@ -1,4 +1,4 @@
-|Pvm   | Aika	| Kohde		|
+|Pvm   | Aika   | Kohde		|
 |------|--------|---------------|
 |14.5. | 1,5 h | Alkutoimet, aihemäärittely |
 |14.5. | 3 h   | Ohpe-kertaus |
@@ -22,3 +22,4 @@
 |11.6. | 2,5 h | Sekvenssikaavioiden, luokkakaavion ja testien päivitystä,  käyttöliittymän toteutusta |
 |14.6. | 1 h   | Koodikatselmointi |
 |17.6. | 2 h   | Dokumentointi tehty valmiiksi, pieniä parannuskokeiluja koodiin |
+|17.6. | 2 h   | Pistetilasto-toiminnon tekemistä käyttöliittymään |
