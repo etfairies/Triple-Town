@@ -1,0 +1,31 @@
+##Testausdokumentti
+
+Peli-luokka
+
+Testaamatta jätetyt metodit ja niiden sisällä olevat lauseet:
+
+- alustaPelilauta()
+Metodi alustaa pelilaudan arpomalla satunnaisiin peliruutuihin satunnaisia paloja, pyörittäen for-loopia 15 kertaa. Ei ole tärkeää, kuinka monta palaa ruudulla on ja missä ne ovat.
+
+- arvoPala()
+Metodi arpoo satunnaisen palanumeron. Metodi palauttaa numeron 1 jos mikään ehtolauseista ei toteudu.
+
+- vierekkaistenPalojenHaku()
+Ei ole testattu sitä, että for-loop toistuu vaaditut 5 kertaa.
+
+- tarkistaRuudut()
+En tiedä, miksi kaksi ensimmäistä riviä ei testata, mutta kaksi viimeistä testataan.
+
+- tarkistaRuutu()
+Metodi on näkyvyydeltään private, joten metodin ehtolausetta ei voi suoraan testata pelilaudan ulkopuolisilla ruuduilla.
+
+- liikutaKarhua()
+Metodi arpoo suunnan, johon karhua liikutetaan, joten sitä ei ole testattu.
+
+-liikutaKarhuRuutuun()
+Karhu-muuttuja on luokan sisäinen olio, joten sen muuttuneita koordinaatteja ei testata.
+
+Bugit
+Pisteet eivät välttämättä tallennu oikein, jos paloja yhdistettäessä tulee pidempi ketjureaktio.
+
+Kun peli loppuu, pelin pisteet eivät näy pistetilastossa palatessa päävalikkoon, vaan sovelluksen joutuu käynnistämään uudelleen.
