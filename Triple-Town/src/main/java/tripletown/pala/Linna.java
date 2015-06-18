@@ -13,7 +13,7 @@ public class Linna extends Pala {
     public int getPisteet() {
         return 20000;
     }
-    
+ 
     @Override
     public int getId() {
         return 6;

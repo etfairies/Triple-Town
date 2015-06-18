@@ -11,7 +11,7 @@ import tripletown.kayttoliittyma.Kayttoliittyma;
 public class AloitaPeliKuuntelija implements ActionListener {
 
     private final Kayttoliittyma kl;
-    
+ 
     public AloitaPeliKuuntelija(Kayttoliittyma kl) {
         this.kl = kl;
     }

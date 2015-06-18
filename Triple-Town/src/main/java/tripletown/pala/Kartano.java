@@ -14,7 +14,7 @@ public class Kartano extends Pala {
     public int getPisteet() {
         return 5000;
     }
-    
+
     @Override
     public int getId() {
         return 5;

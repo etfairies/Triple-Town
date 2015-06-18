@@ -20,7 +20,7 @@ public class Pala {
     public int getY() {
        return this.y;
     }
-    
+ 
     public void liiku(int x, int y) {
         this.x = x;
         this.y = y;

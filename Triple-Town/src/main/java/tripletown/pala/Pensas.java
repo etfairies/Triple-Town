@@ -13,7 +13,7 @@ public class Pensas extends Pala {
     public int getPisteet() {
         return 20;
     }
-    
+   
     @Override
     public int getId() {
         return 2;
