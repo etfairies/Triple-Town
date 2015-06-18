@@ -9,9 +9,9 @@ Voit sulkea sovelluksen painamalla "Lopeta". Ruudussa näet myös pelin kymmenen
 
 Pelin pelaaminen
 
-Kun aloitat pelin, näet peli-ikkunassa pelilaudan sekä yläreunassa palkin, jossa ovat saavuttamasi pisteet. Voit palata valikkoon painamalla nappia "Päävalikko", mutta huomioi, että pelitilanteesi ei tallennu, vaan joudut sen jälkeen aloittamaan pelin alusta.
-Voit asettaa palan pelilaudalle painamalla tyhjää ruutua. Kun asetat kolme ruohoa vierekkäisiin ruutuihin, ne muuttuvat yhdeksi pensaaksi. Kolme vierekkäisissä ruuduissa olevaa pensasta taas muutuu puuksi. Saat uusia, korkeatasoisempia paloja yhdistelemällä samanlaisia paloja tähän tapaan.
-Saat pisteitä asetetuista paloista sen mukaan, mitä korkeampitasoisempia ne ovat. Pyri asettamaan palat laudalle niin, että saat mahdollisimman paljon kartanoita ja linnoja. Näin voit maksimoida pisteesi!
+Kun aloitat pelin, näet peli-ikkunassa pelilaudan sekä yläreunassa palkin, jossa ovat saavuttamasi pisteet. Voit palata valikkoon painamalla nappia "Päävalikko", mutta huomioi, että pelitilanteesi ei tallennu, vaan joudut sen jälkeen aloittamaan pelin alusta.</br>
+Voit asettaa palan pelilaudalle painamalla tyhjää ruutua. Kun asetat kolme ruohoa vierekkäisiin ruutuihin, ne muuttuvat yhdeksi pensaaksi. Kolme vierekkäisissä ruuduissa olevaa pensasta taas muutuu puuksi. Saat uusia, korkeatasoisempia paloja yhdistelemällä samanlaisia paloja tähän tapaan.</br>
+Saat pisteitä asetetuista paloista sen mukaan, mitä korkeampitasoisempia ne ovat. Pyri asettamaan palat laudalle niin, että saat mahdollisimman paljon kartanoita ja linnoja. Näin voit maksimoida pisteesi!</br>
 Pelilaudalla on myös karhu, joka saattaa talsia juuri siihen ruutuun, mihin haluaisit asettaa palan. Valitettavasti sinun täytyy valita joku muu ruutu, kunnes karhu on siirtynyt muualle.
 
 Seuraavaksi on listattu kaikki palat ja mistä paloista ne ovat saavutettavissa:
