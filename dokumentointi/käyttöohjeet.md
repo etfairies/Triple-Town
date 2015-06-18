@@ -1,15 +1,15 @@
 ##Käyttöohjeet
 
-Triple Townissa luodaan kaupunkia asetettelemalla pelilaudalle ruohoja, pensaita, puita ja rakennuksia. Kolme samanlaista palaa yhdistyy uudeksi palaksi.
+Triple Townissa luodaan kaupunkia asettelemalla pelilaudalle ruohoja, pensaita, puita ja rakennuksia. Kolme samanlaista palaa yhdistyy uudeksi palaksi.
 
 Pelin aloitus
 
-Aloitusruudussa voit aloittaa pelin painamalla "Pelaa". Jos haluat tarkastella parhaita pelissä saavutettuja pisteitä, paina "Pistetilasto".
-Voit sulkea sovelluksen painamalla "Lopeta".
+Aloitusruudussa voit aloittaa pelin painamalla "Pelaa".
+Voit sulkea sovelluksen painamalla "Lopeta". Ruudussa näet myös pelin kymmenen parasta saavutettua pistemäärää.
 
 Pelin pelaaminen
 
-Kun aloitat pelin, näet peli-ikkunassa pelilaudan sekä yläreunassa palkin, jossa ovat saavuttamasi pisteet sekä pala, joka on seuraavaksi asetettavana.
+Kun aloitat pelin, näet peli-ikkunassa pelilaudan sekä yläreunassa palkin, jossa ovat saavuttamasi pisteet. Voit palata valikkoon painamalla nappia "Päävalikko", mutta huomioi, että pelitilanteesi ei tallennu, vaan joudut sen jälkeen aloittamaan pelin alusta.
 Voit asettaa palan pelilaudalle painamalla tyhjää ruutua. Kun asetat kolme ruohoa vierekkäisiin ruutuihin, ne muuttuvat yhdeksi pensaaksi. Kolme vierekkäisissä ruuduissa olevaa pensasta taas muutuu puuksi. Saat uusia, korkeatasoisempia paloja yhdistelemällä samanlaisia paloja tähän tapaan.
 Saat pisteitä asetetuista paloista sen mukaan, mitä korkeampitasoisempia ne ovat. Pyri asettamaan palat laudalle niin, että saat mahdollisimman paljon kartanoita ja linnoja. Näin voit maksimoida pisteesi!
 Pelilaudalla on myös karhu, joka saattaa talsia juuri siihen ruutuun, mihin haluaisit asettaa palan. Valitettavasti sinun täytyy valita joku muu ruutu, kunnes karhu on siirtynyt muualle.

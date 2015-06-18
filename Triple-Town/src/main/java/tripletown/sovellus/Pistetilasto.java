@@ -16,11 +16,11 @@ import java.util.Scanner;
 public class Pistetilasto {
 
     private List<Integer> kaikkiPisteet;
-    private File pistetilasto;
+    private final File pistetilasto;
 
     public Pistetilasto() {
         this.kaikkiPisteet = new ArrayList<>();
-        this.pistetilasto = new File("src/main/resources/pistetilasto.txt");
+        this.pistetilasto = new File("src/tiedostot/pistetilasto.txt");
     }
 
     /**
@@ -41,7 +41,7 @@ public class Pistetilasto {
      * Metodi lukee tekstitiedostoa pistetilasto.txt. Tiedostossa olevat pisteet
      * talletetaan listaan.
      *
-     * @return Palauttaa listan, johon pisteet on talletettu. *
+     * @return Palauttaa listan, johon pisteet on talletettu.
      */
     public List<Integer> lueTiedosto() {
         try {
@@ -55,14 +55,21 @@ public class Pistetilasto {
         return kaikkiPisteet;
     }
 
+    /**
+     * Metodi lisää tekstitiedostossa olevat pisteet listaan.
+     * @param lukija    Scanner-olio, joka lukee tekstitiedostoa.
+     */
     private void lisaaPisteetListaan(Scanner lukija) {
-        lukija.nextLine();
         while (lukija.hasNextLine()) {
             String pisteet = lukija.nextLine();
             kaikkiPisteet.add(Integer.parseInt(pisteet));
         }
     }
 
+    /**
+     * Metodi järjestää pistelistan suurimmasta pienimpään.
+     * Metodi huolehtii myös siitä, että pistelista on korkeintaan 10 alkion pituinen.
+     */
     public void jarjestaPisteLista() {
         Collections.sort(kaikkiPisteet);
         Collections.reverse(kaikkiPisteet);
@@ -73,8 +80,7 @@ public class Pistetilasto {
     }
 
     /**
-     * Metodi tallettaa listassa olevat pisteet tekstitiedostoon
-     * pistetilasto.txt. Tiedostoon talletetaan vain 10 parasta pistetilannetta.
+     * Metodi tallettaa listassa olevat pisteet tekstitiedostoon pistetilasto.txt.
      *
      * @param pistetilasto Tiedosto, johon pisteet talletetaan.
      * @param kaikkiPisteet Lista, johon kaikki pisteet on talletettu. *

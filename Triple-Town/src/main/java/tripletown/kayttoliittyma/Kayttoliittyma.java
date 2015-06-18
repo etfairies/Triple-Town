@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import tripletown.kuuntelijat.AloitaPeliKuuntelija;
 import tripletown.kuuntelijat.LopetaPeliKuuntelija;
-import tripletown.kuuntelijat.PeliKuuntelija;
-import tripletown.kuuntelijat.PistetilastonKuuntelija;
+import tripletown.kuuntelijat.RuutuKuuntelija;
+import tripletown.kuuntelijat.ValikkoKuuntelija;
 import tripletown.sovellus.Peli;
 import tripletown.sovellus.Pistetilasto;
 
@@ -25,35 +25,37 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     private JPanel aloitusPaneeli;
     private JPanel pistePaneeli;
-    private JLabel seuraavaPala;
+    private JPanel peliPaneeli;
+    private JPanel peliruudunYlaPalkki;
+    private JLabel loppuTeksti;
     private JLabel pisteet;
-    private final Peli peli;
+    private Peli peli;
     private final int leveys = 6;
     private final int korkeus = 6;
-    private final JButton[][] ruudut;
+    private JButton[][] ruudut;
     private int arvottuPala;
-    private Pistetilasto tilasto;
     private final String[] kuvat = {
-        "src/main/resources/kuvat/karhu.png",
-        "src/main/resources/kuvat/ruoho.png",
-        "src/main/resources/kuvat/pensas.png",
-        "src/main/resources/kuvat/puu.png",
-        "src/main/resources/kuvat/talo.png",
-        "src/main/resources/kuvat/kartano.png",
-        "src/main/resources/kuvat/linna.png"};
+        "src/tiedostot/kuvat/karhu.png",
+        "src/tiedostot/kuvat/ruoho.png",
+        "src/tiedostot/kuvat/pensas.png",
+        "src/tiedostot/kuvat/puu.png",
+        "src/tiedostot/kuvat/talo.png",
+        "src/tiedostot/kuvat/kartano.png",
+        "src/tiedostot/kuvat/linna.png"};
     private final String[] palat = {"", "ruoho", "pensas", "puu", "talo", "kartano", "linna"};
-
-    public Kayttoliittyma() {
-        peli = new Peli(leveys, korkeus);
-        ruudut = new JButton[leveys][korkeus];
-        tilasto = new Pistetilasto();
-    }
 
     /**
      * Metodi luo sovelluksen kehyksen ja lisää siihen aloitusruudun.
      */
     @Override
     public void run() {
+        luoIkkuna();
+
+        luoAloitusRuutu();
+        luoPistetilastoruutu();
+    }
+
+    public void luoIkkuna() {
         frame = new JFrame("Triple Town");
         frame.setPreferredSize(new Dimension(400, 420));
 
@@ -64,50 +66,93 @@ public class Kayttoliittyma implements Runnable {
 
         frame.pack();
         frame.setLocationRelativeTo(null);
-
-        luoAloitusRuutu();
         frame.setVisible(true);
-
     }
 
-    public JFrame getFrame() {
-        return frame;
+    public void luoAloitusRuutu() {
+        aloitusPaneeli = new JPanel();
+        frame.add(aloitusPaneeli, BorderLayout.NORTH);
+
+        JButton pelaaNappi = new JButton("Pelaa");
+        JButton lopetaNappi = new JButton("Lopeta");
+        pelaaNappi.addActionListener(new AloitaPeliKuuntelija(this));
+        lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
+
+        aloitusPaneeli.add(pelaaNappi);
+        aloitusPaneeli.add(lopetaNappi);
+    }
+
+    public void luoPistetilastoruutu() {
+        pistePaneeli = new JPanel(new GridLayout(11, 1));
+
+        frame.add(pistePaneeli, BorderLayout.CENTER);
+
+        Pistetilasto tilasto = new Pistetilasto();
+
+        List<Integer> kaikkiPisteet = tilasto.lueTiedosto();
+        JLabel p = new JLabel("Pistetilasto");
+        pistePaneeli.add(p);
+
+        for (int i = 0; i < kaikkiPisteet.size(); i++) {
+            JLabel piste = new JLabel(i + 1 + ": " + kaikkiPisteet.get(i));
+            pistePaneeli.add(piste);
+        }
     }
 
     /**
      * Metodi luo peliruudun komponentit.
      */
     public void aloitaPeli() {
-
+        peli = new Peli(leveys, korkeus);
+        ruudut = new JButton[leveys][korkeus];
         frame.remove(aloitusPaneeli);
+        luoPeliruudunYlaPalkki();
+        luoRuudukko();
 
-        frame.add(luoPeliruudunYlaPalkki(), BorderLayout.NORTH);
-        frame.add(luoRuudukko());
+        frame.add(peliruudunYlaPalkki, BorderLayout.NORTH);
+        frame.add(peliPaneeli);
         peli.alustaPelilauta();
+
         paivita();
+    }
+
+    /**
+     * Metodi luo peliruudun yläpalkin, jossa näkyvät pisteet ja nappi, josta
+     * palataan päävalikkoon.
+     *
+     */
+    private void luoPeliruudunYlaPalkki() {
+        peliruudunYlaPalkki = new JPanel();
+
+        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
+        loppuTeksti = new JLabel(" ");
+        JButton valikkoNappi = new JButton("Päävalikko");
+        valikkoNappi.addActionListener(new ValikkoKuuntelija(this));
+
+        peliruudunYlaPalkki.add(pisteet);
+        peliruudunYlaPalkki.add(loppuTeksti);
+        peliruudunYlaPalkki.add(valikkoNappi);
     }
 
     /**
      * Metodi luo peliruudut ja lisää ne kehykseen.
      */
-    private JPanel luoRuudukko() {
+    private void luoRuudukko() {
 
-        JPanel ruudukko = new JPanel(new GridLayout(leveys, korkeus));
+        peliPaneeli = new JPanel(new GridLayout(leveys, korkeus));
 
         for (int y = 0; y < korkeus; y++) {
             for (int x = 0; x < leveys; x++) {
 
-                ruudukko.add(luoRuutu(x, y));
+                peliPaneeli.add(luoRuutu(x, y));
             }
         }
-
-        return ruudukko;
     }
 
     private JButton luoRuutu(int x, int y) {
         JButton ruutu = new JButton();
 
-        ruutu.addActionListener(new PeliKuuntelija(peli, this, x, y));
+        ruutu.addMouseListener(new RuutuKuuntelija(peli, this, x, y));
         ruutu.setBackground(Color.green);
         ruudut[x][y] = ruutu;
 
@@ -133,10 +178,9 @@ public class Kayttoliittyma implements Runnable {
 
         if (peli.pelilautaTaynna()) {
             tallennaPisteet();
+            loppuTeksti.setText("Peli loppui!");
         }
-
         this.arvottuPala = peli.arvoPala();
-        seuraavaPala.setText(" Aseta " + palat[arvottuPala]);
 
     }
 
@@ -171,66 +215,33 @@ public class Kayttoliittyma implements Runnable {
      * pisteet.
      */
     private void tallennaPisteet() {
-        tilasto = new Pistetilasto();
+        Pistetilasto tilasto = new Pistetilasto();
         tilasto.tallennaPisteet(peli.pistetilanne());
     }
 
     /**
-     * Metodi luo aloitusruudun napit.
+     * Metodi poistaa ikkunasta pelipaneelit ja luo aloitusruudun uudelleen.
      */
-    private void luoAloitusRuutu() {
-        aloitusPaneeli = new JPanel();
-        JButton pelaaNappi = new JButton("Pelaa");
-        JButton pisteetNappi = new JButton("Pistetilasto");
-        JButton lopetaNappi = new JButton("Lopeta");
-        pelaaNappi.addActionListener(new AloitaPeliKuuntelija(this));
-        pisteetNappi.addActionListener(new PistetilastonKuuntelija(this));
-        lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
+    public void palaaValikkoon() {
+        frame.remove(peliruudunYlaPalkki);
+        frame.remove(peliPaneeli);
 
-        aloitusPaneeli.add(pelaaNappi);
-        aloitusPaneeli.add(pisteetNappi);
-        aloitusPaneeli.add(lopetaNappi);
+        frame.add(aloitusPaneeli);
+        luoPistetilastoruutu();
 
-        pistePaneeli = new JPanel();
-        frame.add(aloitusPaneeli, BorderLayout.NORTH);
-        frame.add(pistePaneeli);
+        frame.repaint();
     }
 
-    /**
-     * Metodi luo peliruudun yläpalkin, jossa näkyvät pisteet, asetettava pala
-     * ja Lopeta-nappi.
-     *
-     * @return palauttaa yläpalkki-paneelin.
-     */
-    private JPanel luoPeliruudunYlaPalkki() {
-        JPanel ylaPalkki = new JPanel();
+    public void lisaaRuutuunAsetettavanKuva(int x, int y) {
 
-        pisteet = new JLabel("Pisteet: " + peli.pistetilanne());
-        seuraavaPala = new JLabel("  Aseta " + getArvottuPala());
-        JButton lopetaNappi = new JButton("Lopeta");
-        lopetaNappi.addActionListener(new LopetaPeliKuuntelija());
+        int palanumero = arvottuPala;
+        ImageIcon pala = new ImageIcon(kuvat[palanumero]);
+        ruudut[x][y].setIcon(pala);
 
-        ylaPalkki.add(pisteet);
-        ylaPalkki.add(seuraavaPala);
-        ylaPalkki.add(lopetaNappi);
-
-        return ylaPalkki;
     }
 
-    public void luoPistetilastoruutu() {
-        List<Integer> kaikkiPisteet = tilasto.lueTiedosto();
-        
-
-        JLabel p = new JLabel("Pistetilasto");
-        pistePaneeli.add(p);
-
-        for (int i = 0; i < kaikkiPisteet.size(); i++) {
-            JLabel piste = new JLabel(i + ": " + kaikkiPisteet.get(i));
-            pistePaneeli.add(piste);
-        }
-        
-//        frame.add(pistePaneeli, BorderLayout.CENTER);
-
+    public void poistaRuudustaAsetettavanKuva(int x, int y) {
+        ruudut[x][y].setIcon(null);
     }
 
 }

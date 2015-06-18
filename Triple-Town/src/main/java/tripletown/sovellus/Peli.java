@@ -155,6 +155,8 @@ public class Peli {
             }
 
             if (naapurit.size() >= 3) {
+                tarkistaRuudut(naapurit, naapurit.get(1));
+                tarkistaRuudut(naapurit, naapurit.get(2));
                 yhdistaPalat(naapurit);
             }
         }
@@ -234,27 +236,32 @@ public class Peli {
     }
 
     /**
-     * Metodi arpoo suunnan, johon karhua liikutetaan
+     * Metodi arpoo suunnan, johon karhua liikutetaan.
      */
     public void liikutaKarhua() {
-        int ruutu = arpoja.nextInt(4);
 
-        if (ruutu == 0) {
-            liikutaKarhuRuutuun(this.karhu.getX() - 1, this.karhu.getY());
+        if (!karhuAnsassa()) {
+            int ruutu = arpoja.nextInt(4);
 
-        } else if (ruutu == 1) {
-            liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() - 1);
+            if (ruutu == 0) {
+                liikutaKarhuRuutuun(this.karhu.getX() - 1, this.karhu.getY());
 
-        } else if (ruutu == 2) {
-            liikutaKarhuRuutuun(this.karhu.getX() + 1, this.karhu.getY());
+            } else if (ruutu == 1) {
+                liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() - 1);
 
-        } else if (ruutu == 3) {
-            liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() + 1);
+            } else if (ruutu == 2) {
+                liikutaKarhuRuutuun(this.karhu.getX() + 1, this.karhu.getY());
+
+            } else if (ruutu == 3) {
+                liikutaKarhuRuutuun(this.karhu.getX(), this.karhu.getY() + 1);
+            }
         }
     }
 
     /**
      * Metodi siirtää karhun uuteen ruutuun ja muuttaa vanhan ruudun tyhjäksi.
+     * Jos ruutu, johon karhu yrittää siirtyä, on varattu, kutsutaan metodia
+     * liikutaKarhua() uudestaan.
      *
      * @param x Ruudun x-koordinaatti, johon Karhu siirretään
      * @param y Ruudun y-koordinaatti, johon Karhu siirretään
@@ -265,8 +272,33 @@ public class Peli {
                 lauta[this.karhu.getX()][this.karhu.getY()] = null;
                 this.karhu.liiku(x, y);
                 lauta[x][y] = this.karhu;
+            } else {
+                liikutaKarhua();
             }
         }
+    }
+
+    /**
+     * Metodi tarkistaa, onko karhun kaikissa vierekkäisissä ruuduissa jokin
+     * pala.
+     *
+     * @return True, jos kaikki vierekkäiset ruudut ovat varattu. False, jos
+     * vähintään yhdessä vierekkäisessä ruudussa on tyhjää.
+     */
+    private boolean karhuAnsassa() {
+        int kx = karhu.getX();
+        int ky = karhu.getY();
+
+        if (kx - 1 >= 0 && lauta[kx - 1][ky] != null) {
+            if (ky - 1 >= 0 && lauta[kx][ky - 1] != null) {
+                if (kx + 1 < leveys && lauta[kx + 1][ky] != null) {
+                    if (ky + 1 < korkeus && lauta[kx][ky + 1] != null) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     /**

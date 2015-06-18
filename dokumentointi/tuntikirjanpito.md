@@ -23,3 +23,4 @@
 |14.6. | 1 h   | Koodikatselmointi |
 |17.6. | 2 h   | Dokumentointi tehty valmiiksi, pieniä parannuskokeiluja koodiin |
 |17.6. | 2 h   | Pistetilasto-toiminnon tekemistä käyttöliittymään |
+|18.6. | 4,5 h | Ohjelman viimeistelyä |

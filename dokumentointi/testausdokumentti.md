@@ -25,8 +25,7 @@ Metodi arpoo suunnan, johon karhua liikutetaan, joten sitä ei ole testattu.
 -liikutaKarhuRuutuun()
 Karhu-muuttuja on luokan sisäinen olio, joten sen muuttuneita koordinaatteja ei testata.
 
-
 Bugit
-Pisteet eivät välttämättä tallennu oikein, jos paloja yhdistettäessä tulee pidempi ketjureaktio.
+Pisteet eivät välttämättä kasva oikein, jos paloja yhdistettäessä tulee pidempi ketjureaktio.
 
-Vierekkäisiä paloja voi yhdistyä 3-5 kpl, riippuen niiden sijainneista.
+Kun peli loppuu, pelin pisteet eivät näy pistetilastossa palatessa päävalikkoon, vaan sovelluksen joutuu käynnistämään uudelleen.

@@ -13,5 +13,5 @@ Ohjelma koostuu Käyttöliittymä -luokasta joka luo graafisen käyttöliittymä
 
 Käyttöliittymä kommunikoi Peli-luokan kanssa, joka hoitaa varsinaiset muutokset pelilaudalla. Peli-luokka luo Pala-olioita.
 
-Käyttöliittymä luo kuuntelijat aloitusruudun napeille ja pelilaudan ruuduille.
+Käyttöliittymään kuuluu kuuntelijat aloitusruudun napeille ja pelilaudan ruuduille.
 
