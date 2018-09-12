@@ -1,3 +1,3 @@
 # Triple-Town
 
-Triple Town -klooni.
+Oma versio mobiilipelistä Triple Town.
